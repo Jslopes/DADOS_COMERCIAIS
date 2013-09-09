@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{D2C8B455-A6FF-49AB-8B4D-77F4F50BB655}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>mcr_DadosComerciais</RootNamespace>
+    <AssemblyName>mcrDadosComerciais</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>mcrDadosComerciais.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>mcrDadosComerciais.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ADODB, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\ADODB.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Interop.ErpBS800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.ErpBS800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.ErpDS800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.ErpDS800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.GcpBE800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.GcpBE800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.IGcpBS800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.IGcpBS800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.StdBE800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.StdBE800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.StdPlatBS800">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\PRIMAVERA\SG800\Interop.StdPlatBS800.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cLocalizer.vb" />
+    <Compile Include="cDadosComerciais.vb" />
+    <Compile Include="DataSetDocAberto.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetDocAberto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetDocAberto.vb">
+      <DependentUpon>DataSetDocAberto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetEncCarteira.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetEncCarteira.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetEncCarteira.vb">
+      <DependentUpon>DataSetEncCarteira.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetEncFaturadas.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetEncFaturadas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetEncFaturadas.vb">
+      <DependentUpon>DataSetEncFaturadas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetExtrato.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetExtrato.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmDadosComerciais.Designer.vb">
+      <DependentUpon>frmDadosComerciais.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDadosComerciais.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaDeDados.Designer.vb">
+      <DependentUpon>frmListaDeDados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaDeDados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobre.Designer.vb">
+      <DependentUpon>frmSobre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSobre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="m2VendasAnuais.vb" />
+    <Compile Include="m4Faturado.vb" />
+    <Compile Include="m5Extrato.vb" />
+    <Compile Include="m6DocAberto.vb" />
+    <Compile Include="mBackup.vb" />
+    <Compile Include="mCalculo.vb" />
+    <Compile Include="mDadosComerciaisView.vb" />
+    <Compile Include="mDataSet.vb" />
+    <Compile Include="m3EmCarteira.vb" />
+    <Compile Include="mForms.vb" />
+    <Compile Include="mGeral.vb" />
+    <Compile Include="mGeral1.vb" />
+    <Compile Include="mLayout.vb" />
+    <Compile Include="mNumericos.vb" />
+    <Compile Include="mPedidosEmCarteira.vb" />
+    <Compile Include="mPrint.vb" />
+    <Compile Include="mXExportGrid.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmDadosComerciais.resx">
+      <DependentUpon>frmDadosComerciais.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaDeDados.resx">
+      <DependentUpon>frmListaDeDados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSobre.resx">
+      <DependentUpon>frmSobre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataSetDocAberto.xsc">
+      <DependentUpon>DataSetDocAberto.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetDocAberto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetDocAberto.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetDocAberto.xss">
+      <DependentUpon>DataSetDocAberto.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetEncCarteira.xsc">
+      <DependentUpon>DataSetEncCarteira.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetEncCarteira.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEncCarteira.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetEncCarteira.xss">
+      <DependentUpon>DataSetEncCarteira.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetEncFaturadas.xsc">
+      <DependentUpon>DataSetEncFaturadas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetEncFaturadas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEncFaturadas.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetEncFaturadas.xss">
+      <DependentUpon>DataSetEncFaturadas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetExtrato.xsc">
+      <DependentUpon>DataSetExtrato.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetExtrato.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetExtrato.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetExtrato.xss">
+      <DependentUpon>DataSetExtrato.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\docexcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\docpdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\docword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filterrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\matriz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pesquisar16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_in.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
