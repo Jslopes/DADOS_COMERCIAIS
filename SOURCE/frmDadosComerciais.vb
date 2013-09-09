@@ -667,6 +667,8 @@ Public Class frmDadosComerciais
             Dim sSql As String
             iAno = iAno + iFatorAno
 
+            sSql = ""
+
             sSql = sSql & " SELECT LinhasDoc.Artigo, LinhasDoc.Descricao,LinhasDoc.Quantidade, LinhasDoc.PrecUnit, LinhasDoc.PrecoLiquido FROM LinhasDoc "
             sSql = sSql & " INNER JOIN CabecDoc ON CabecDoc.id = LinhasDoc.IdCabecDoc"
             sSql = sSql & " WHERE CabecDoc.TipoDoc  IN ('FA', 'NC')"
