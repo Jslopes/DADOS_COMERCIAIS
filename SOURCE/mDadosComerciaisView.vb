@@ -103,7 +103,7 @@ Module mDadosComerciaisView
             gv.OptionsHint.ShowColumnHeaderHints = False
 
             gv.OptionsView.ShowAutoFilterRow = True
-            gv.OptionsView.ShowGroupPanel = True
+            gv.OptionsView.ShowGroupPanel = False
             gv.OptionsView.ShowFilterPanelMode = ShowFilterPanelMode.Never
             gv.OptionsView.ShowFooter = True
             gv.OptionsView.ShowGroupExpandCollapseButtons = False

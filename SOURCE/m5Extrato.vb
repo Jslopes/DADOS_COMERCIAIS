@@ -33,7 +33,32 @@ Module m5Extrato
                 gv52.Columns(i).AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
                 gv52.Columns(i).AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.HorzAlignment.Center
                 gv52.Columns(i).OptionsColumn.AllowEdit = False
+                Select Case i
+                    Case 5, 6, 7
+                        gv52.Columns(i).DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                        gv52.Columns(i).DisplayFormat.FormatString = "N2"
+                    Case 4
+                        gv52.Columns(i).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+                        gv52.Columns(i).AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+                    Case Else
 
+                End Select
+
+            Next
+
+            For i = 0 To gv51.RowCount - 1
+                Dim dRelationIndex As Integer = gv51.GetRelationIndex(i, "Empresa_Extrato")
+                Dim dView As GridView = TryCast(gv51.GetDetailView(i, 0), GridView)
+                Dim aCollapsed As Boolean = dView Is Nothing
+                If dView Is Nothing Then
+                    gv51.ExpandMasterRow(i)
+                    dView = TryCast(gv51.GetDetailView(i, dRelationIndex), GridView)
+                End If
+                If dView IsNot Nothing Then
+                    dView.SetRowCellValue(0, dView.Columns(4), "")
+                    dView.SetRowCellValue(dView.RowCount - 1, dView.Columns(4), "")
+                End If
+                If aCollapsed Then gv51.CollapseMasterRow(i)
             Next
 
             gv51.OptionsView.ColumnAutoWidth = False
@@ -97,7 +122,7 @@ Module m5Extrato
                 Dim reader As OleDb.OleDbDataReader = sqlCmd.ExecuteReader(CommandBehavior.CloseConnection)
 
                 dsExtrato.Tables("Extrato").Rows.Add(New Object() {CStr(Empresa), CDate(DataInicial), CStr("S. Inicial"), _
-                                                           CStr(""), 0, 0, 0, CDbl(Saldo)})
+                                                           CStr(""), CStr(""), 0, 0, CDbl(Saldo)})
 
 
                 Do While reader.Read
@@ -113,7 +138,7 @@ Module m5Extrato
             End Using
 
             dsExtrato.Tables("Extrato").Rows.Add(New Object() {CStr(Empresa), CDate(DataFinal), CStr("S. Final"), _
-                                           CStr(""), 0, 0, 0, CDbl(Saldo)})
+                                           CStr(""), CStr(""), 0, 0, CDbl(Saldo)})
 
         Catch ex As Exception
             MsgBox(ex.Message)

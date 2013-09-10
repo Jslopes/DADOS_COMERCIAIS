@@ -462,7 +462,7 @@ Partial Class frmDadosComerciais
         Me.GridControl3.Location = New System.Drawing.Point(0, 0)
         Me.GridControl3.MainView = Me.GridView31
         Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.Size = New System.Drawing.Size(966, 448)
+        Me.GridControl3.Size = New System.Drawing.Size(966, 449)
         Me.GridControl3.TabIndex = 1
         Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView31, Me.GridView33, Me.GridView5, Me.GridView32})
         '
@@ -669,7 +669,7 @@ Partial Class frmDadosComerciais
         Me.GridControl4.Location = New System.Drawing.Point(0, 0)
         Me.GridControl4.MainView = Me.GridView41
         Me.GridControl4.Name = "GridControl4"
-        Me.GridControl4.Size = New System.Drawing.Size(966, 448)
+        Me.GridControl4.Size = New System.Drawing.Size(966, 449)
         Me.GridControl4.TabIndex = 2
         Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView41, Me.GridView43, Me.GridView6, Me.GridView42})
         '
@@ -861,7 +861,7 @@ Partial Class frmDadosComerciais
         GridLevelNode5.LevelTemplate = Me.GridView52
         GridLevelNode5.RelationName = "Empresa_Extrato"
         Me.GridControl5.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
-        Me.GridControl5.Location = New System.Drawing.Point(3, 61)
+        Me.GridControl5.Location = New System.Drawing.Point(3, 62)
         Me.GridControl5.MainView = Me.GridView51
         Me.GridControl5.Name = "GridControl5"
         Me.GridControl5.Size = New System.Drawing.Size(960, 384)
@@ -1082,7 +1082,7 @@ Partial Class frmDadosComerciais
         Me.GridControl6.Location = New System.Drawing.Point(0, 0)
         Me.GridControl6.MainView = Me.GridView61
         Me.GridControl6.Name = "GridControl6"
-        Me.GridControl6.Size = New System.Drawing.Size(966, 448)
+        Me.GridControl6.Size = New System.Drawing.Size(966, 449)
         Me.GridControl6.TabIndex = 3
         Me.GridControl6.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView61, Me.GridView9, Me.GridView11, Me.GridView62})
         '
@@ -2559,7 +2559,7 @@ Partial Class frmDadosComerciais
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.16964!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.83036!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(966, 448)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(966, 449)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'PanelControl3
@@ -2571,7 +2571,7 @@ Partial Class frmDadosComerciais
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl3.Location = New System.Drawing.Point(3, 3)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(960, 52)
+        Me.PanelControl3.Size = New System.Drawing.Size(960, 53)
         Me.PanelControl3.TabIndex = 6
         '
         'dtp2

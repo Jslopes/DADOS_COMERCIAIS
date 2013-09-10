@@ -31,6 +31,7 @@ Public Class cDadosComerciais
 
         'sUtilizador = User
         'sPassword = Psw
+        'Create a connection object. 
 
         EmpresaGeral = EmpresaQueExecuta
         ClienteGeral = Cliente
@@ -44,8 +45,15 @@ Public Class cDadosComerciais
         MotorJU = mObj_JU
         PlataformaJU = pObj_JU
 
+        Dim StrConectFA As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+        Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+        Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+
+
+
 
         Dim f As New frmDadosComerciais
+        f.GetDados(StrConectFA, StrConectKL, StrConectJU)
         f.ShowDialog()
 
         'PlataformaFA.FechaPlataforma()

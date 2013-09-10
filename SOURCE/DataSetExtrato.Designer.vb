@@ -742,7 +742,7 @@ Partial Public Class DataSetExtrato
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddExtratoRow(ByVal parentEmpresaRowByEmpresa_Extrato As EmpresaRow, ByVal DataDoc As Date, ByVal TipoDoc As String, ByVal Serie As String, ByVal Numero As Integer, ByVal Debito As Double, ByVal Credito As Double, ByVal Saldo As Double) As ExtratoRow
+        Public Overloads Function AddExtratoRow(ByVal parentEmpresaRowByEmpresa_Extrato As EmpresaRow, ByVal DataDoc As Date, ByVal TipoDoc As String, ByVal Serie As String, ByVal Numero As String, ByVal Debito As Double, ByVal Credito As Double, ByVal Saldo As Double) As ExtratoRow
             Dim rowExtratoRow As ExtratoRow = CType(Me.NewRow,ExtratoRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, DataDoc, TipoDoc, Serie, Numero, Debito, Credito, Saldo}
             If (Not (parentEmpresaRowByEmpresa_Extrato) Is Nothing) Then
@@ -791,7 +791,7 @@ Partial Public Class DataSetExtrato
             MyBase.Columns.Add(Me.columnTipoDoc)
             Me.columnSerie = New Global.System.Data.DataColumn("Serie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSerie)
-            Me.columnNumero = New Global.System.Data.DataColumn("Numero", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnNumero = New Global.System.Data.DataColumn("Numero", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNumero)
             Me.columnDebito = New Global.System.Data.DataColumn("Debito", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDebito)
@@ -1085,10 +1085,10 @@ Partial Public Class DataSetExtrato
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Numero() As Integer
+        Public Property Numero() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableExtrato.NumeroColumn),Integer)
+                    Return CType(Me(Me.tableExtrato.NumeroColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'Numero' in table 'Extrato' is DBNull.", e)
                 End Try

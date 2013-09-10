@@ -3,10 +3,24 @@ Imports System.Data.OleDb
 Imports System.Data
 Imports System.Drawing
 Imports DevExpress.Utils
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmDadosComerciais
 
     Dim FormInicializado As Boolean = False
+
+    Dim StrConectFA As String = ""
+    Dim StrConectKL As String = ""
+    Dim StrConectJU As String = ""
+
+
+    Friend Sub GetDados(sConFA As String, sConKL As String, sConJU As String)
+        'Create a connection object. 
+        StrConectFA = sConFA
+        StrConectKL = sConKL
+        StrConectJU = sConJU
+
+    End Sub
 
     Private Sub frmDadosComerciais_Activated(sender As Object, e As System.EventArgs) Handles Me.Activated
         If Not FormInicializado Then
@@ -43,6 +57,7 @@ Public Class frmDadosComerciais
                 txtVnd(i).RightToLeft = Windows.Forms.RightToLeft.Yes
                 txtVnd(i).Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
                 txtVnd(i).Properties.Mask.EditMask = "n2"
+                'txtVnd(i).Properties.Mask.ma = "n2"
                 txtVnd(i).Properties.DisplayFormat.FormatType = FormatType.Numeric
                 txtVnd(i).Properties.EditFormat.FormatType = FormatType.Numeric
                 txtVnd(i).Properties.ReadOnly = True
@@ -156,8 +171,7 @@ Public Class frmDadosComerciais
                 Dim DataFinal As String = dtp2.Value.Year & "-" & dtp2.Value.Month & "-" & dtp2.Value.Day
 
                 AtualizarExtrato(DataSetExtrato1, Valor, GridView51, GridView52, DataInicial, DataFinal)
-                AtualizarDocsAberto(DataSetDocAberto1, Valor, GridView61, GridView62)
-
+                AtualizarDocsAberto(DataSetDocAberto1, Valor, GridView61, GridView62, StrConectFA, StrConectKL, StrConectJU)
             Else
                 txtCliente.Text = ""
                 txtNome.Text = ""
@@ -342,15 +356,19 @@ Public Class frmDadosComerciais
 
     End Sub
 
-    Private Sub gridView5_RowCellStyle(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles GridView5.RowCellStyle
+    Private Sub GridView52_RowStyle(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView52.RowStyle
+        Dim View As GridView = sender
+        If (e.RowHandle >= 0) Then
+            Dim category As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns(2))
+            If category = "S. Final" Or category = "S. Inicial" Then
+                e.Appearance.BackColor = Color.Beige
+                e.Appearance.BackColor2 = Color.Beige
+                e.Appearance.Font = New Font("Verdana", 9, FontStyle.Bold)
 
-        'e.Appearance.Font = New Font("Verdana", 9, FontStyle.Regular)
-
-        If GridView1.GetRowCellValue(e.RowHandle, GridView1.Columns(2)) = "S. Final" Then
-            e.Appearance.BackColor = Color.Beige
-            e.Appearance.Font = New Font("Verdana", 9, FontStyle.Bold)
+            End If
         End If
     End Sub
+
 
     Private Function CarregaTblDadosComerciais(Cliente As String, ArrayColunas() As String, ArrayCaption() As String, ArrayGetType() As System.Type, _
                                                     StrConect As String) As DataTable
@@ -616,9 +634,10 @@ Public Class frmDadosComerciais
                     GridView51.ShowLoadingPanel()
                     AtualizarExtrato(DataSetExtrato1, txtCliente.Text, GridView51, GridView52, DataInicial, DataFinal)
                     GridView51.HideLoadingPanel()
+
                 Case 5
                     GridView61.ShowLoadingPanel()
-                    AtualizarDocsAberto(DataSetDocAberto1, txtCliente.Text, GridView61, GridView62)
+                    AtualizarDocsAberto(DataSetDocAberto1, txtCliente.Text, GridView61, GridView62, StrConectFA, StrConectKL, StrConectJU)
                     GridView61.HideLoadingPanel()
             End Select
 
@@ -631,10 +650,6 @@ Public Class frmDadosComerciais
 
     Private Sub BarButtonItem3_ItemClick(sender As System.Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem3.ItemClick
         Me.Close()
-    End Sub
-
-    Private Sub PanelControl2_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles PanelControl2.Paint
-
     End Sub
 
     Private Sub cbEmpresa_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbEmpresa.SelectedIndexChanged
@@ -689,6 +704,10 @@ Public Class frmDadosComerciais
     End Sub
 
     Private Sub txtCliente_ButtonClick(sender As System.Object, e As System.EventArgs) Handles txtCliente.ButtonClick
+
+    End Sub
+
+    Private Sub XtraTabControl1_Click(sender As System.Object, e As System.EventArgs) Handles XtraTabControl1.Click
 
     End Sub
 End Class

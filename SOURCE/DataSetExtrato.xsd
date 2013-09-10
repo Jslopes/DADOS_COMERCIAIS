@@ -27,7 +27,7 @@
               <xs:element name="DataDoc" msprop:Generator_ColumnVarNameInTable="columnDataDoc" msprop:Generator_ColumnPropNameInRow="DataDoc" msprop:Generator_ColumnPropNameInTable="DataDocColumn" msprop:Generator_UserColumnName="DataDoc" type="xs:dateTime" minOccurs="0" />
               <xs:element name="TipoDoc" msdata:Caption="Tipo Doc." msprop:Generator_ColumnVarNameInTable="columnTipoDoc" msprop:Generator_ColumnPropNameInRow="TipoDoc" msprop:Generator_ColumnPropNameInTable="TipoDocColumn" msprop:Generator_UserColumnName="TipoDoc" type="xs:string" minOccurs="0" />
               <xs:element name="Serie" msprop:Generator_ColumnVarNameInTable="columnSerie" msprop:Generator_ColumnPropNameInRow="Serie" msprop:Generator_ColumnPropNameInTable="SerieColumn" msprop:Generator_UserColumnName="Serie" type="xs:string" minOccurs="0" />
-              <xs:element name="Numero" msdata:Caption="Num. Doc" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:int" minOccurs="0" />
+              <xs:element name="Numero" msdata:Caption="Num. Doc" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:string" minOccurs="0" />
               <xs:element name="Debito" msprop:Generator_ColumnVarNameInTable="columnDebito" msprop:Generator_ColumnPropNameInRow="Debito" msprop:Generator_ColumnPropNameInTable="DebitoColumn" msprop:Generator_UserColumnName="Debito" type="xs:double" minOccurs="0" />
               <xs:element name="Credito" msprop:Generator_ColumnVarNameInTable="columnCredito" msprop:Generator_ColumnPropNameInRow="Credito" msprop:Generator_ColumnPropNameInTable="CreditoColumn" msprop:Generator_UserColumnName="Credito" type="xs:double" minOccurs="0" />
               <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:double" minOccurs="0" />
@@ -43,7 +43,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Empresa_Extrato" msdata:parent="Empresa" msdata:child="Extrato" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="Extrato" msprop:Generator_ChildPropName="GetExtratoRows" msprop:Generator_ParentPropName="EmpresaRow" msprop:Generator_UserRelationName="Empresa_Extrato" msprop:Generator_RelationVarName="relationEmpresa_Extrato" msprop:Generator_UserParentTable="Empresa" />
+      <msdata:Relationship name="Empresa_Extrato" msdata:parent="Empresa" msdata:child="Extrato" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="Extrato" msprop:Generator_ChildPropName="GetExtratoRows" msprop:Generator_UserParentTable="Empresa" msprop:Generator_UserRelationName="Empresa_Extrato" msprop:Generator_RelationVarName="relationEmpresa_Extrato" msprop:Generator_ParentPropName="EmpresaRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

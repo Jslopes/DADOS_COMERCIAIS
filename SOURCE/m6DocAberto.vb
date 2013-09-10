@@ -3,12 +3,8 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Module m6DocAberto
     Public Sub AtualizarDocsAberto(dsDocsAberto As DataSet, Cliente As String, _
-                              gv61 As GridView, gv62 As GridView)
+                              gv61 As GridView, gv62 As GridView, StrConectFA As String, StrConectKL As String, StrConectJU As String)
         Try
-            'Create a connection object. 
-            Dim StrConectFA As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
 
             CarregaEmpresas(dsDocsAberto)
 
@@ -40,6 +36,12 @@ Module m6DocAberto
             gv61.Columns(1).Width = 300
 
             gv62.OptionsView.ColumnAutoWidth = False
+
+
+            If gv62.Columns(9).Summary.ActiveCount > 0 Then
+                gv62.Columns(9).Summary.Remove(gv62.Columns(9).Summary.Item(0))
+            End If
+            'gv62.Columns(9).Summary.Remove(gv62.Columns(9).Summary.Item(0))
             gv62.Columns(9).Summary.Add(DevExpress.Data.SummaryItemType.Sum)
             gv62.BestFitColumns()
 
