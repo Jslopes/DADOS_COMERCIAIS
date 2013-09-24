@@ -3,7 +3,7 @@ Imports System.Data
 Imports System.Math
 
 Module m2VendasAnuais
-    Public Function CalcularValorMes(iAno As Integer, iMes As Integer) As Double
+    Public Function CalcularValorMes(cliente As String, iAno As Integer, iMes As Integer, StrConect As String) As Double
         Dim sSql As String = ""
         Dim dValor As Double
         Try
@@ -18,14 +18,16 @@ Module m2VendasAnuais
                 iAno = iAno + 2
                 iMes = iMes - 24
             End If
-            tmp = abs(tmp)
+            tmp = Abs(tmp)
 
             sSql = ""
             sSql = sSql & " SELECT ISNULL(SUM(LinhasDoc.PrecoLiquido),0) AS Total FROM LinhasDoc "
             sSql = sSql & " INNER JOIN CabecDoc ON CabecDoc.id = LinhasDoc.IdCabecDoc"
-            sSql = sSql & " WHERE CabecDoc.TipoDoc  IN ('FA', 'NC') AND YEAR(LinhasDoc.Data) = '" & iAno & "' AND MONTH(LinhasDoc.Data) = '" & iMes & "'"
+            sSql = sSql & " WHERE CabecDoc.TipoDoc  IN ('FA', 'NC') AND "
+            sSql = sSql & "     YEAR(LinhasDoc.Data) = '" & iAno & "' AND MONTH(LinhasDoc.Data) = '" & iMes & "' AND "
+            sSql = sSql & "     CabecDoc.Entidade = '" & cliente & "'"
 
-            Dim StrConect As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConect As String = Plataforma.BaseDados.DaConnectionString(Plataforma.BaseDados.DaNomeBDdaEmpresa(Plataforma.Contexto.Empresa.CodEmp).ToString, "Default").ToString
             Dim Connection As New OleDbConnection(StrConect)
             Using sqlCon As New OleDb.OleDbConnection(StrConect)
                 Dim sqlCmd As New OleDb.OleDbCommand(sSql, sqlCon)

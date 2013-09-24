@@ -29,11 +29,7 @@ Partial Public Class DataSetEncFaturadas
     
     Private tableCabecDoc As CabecDocDataTable
     
-    Private tableFaturas As FaturasDataTable
-    
     Private relationEmpresa_CabecECL As Global.System.Data.DataRelation
-    
-    Private relationCabecECL_Faturas As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -70,9 +66,6 @@ Partial Public Class DataSetEncFaturadas
             If (Not (ds.Tables("CabecDoc")) Is Nothing) Then
                 MyBase.Tables.Add(New CabecDocDataTable(ds.Tables("CabecDoc")))
             End If
-            If (Not (ds.Tables("Faturas")) Is Nothing) Then
-                MyBase.Tables.Add(New FaturasDataTable(ds.Tables("Faturas")))
-            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -107,16 +100,6 @@ Partial Public Class DataSetEncFaturadas
     Public ReadOnly Property CabecDoc() As CabecDocDataTable
         Get
             Return Me.tableCabecDoc
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Faturas() As FaturasDataTable
-        Get
-            Return Me.tableFaturas
         End Get
     End Property
     
@@ -193,9 +176,6 @@ Partial Public Class DataSetEncFaturadas
             If (Not (ds.Tables("CabecDoc")) Is Nothing) Then
                 MyBase.Tables.Add(New CabecDocDataTable(ds.Tables("CabecDoc")))
             End If
-            If (Not (ds.Tables("Faturas")) Is Nothing) Then
-                MyBase.Tables.Add(New FaturasDataTable(ds.Tables("Faturas")))
-            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -240,14 +220,7 @@ Partial Public Class DataSetEncFaturadas
                 Me.tableCabecDoc.InitVars
             End If
         End If
-        Me.tableFaturas = CType(MyBase.Tables("Faturas"),FaturasDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableFaturas) Is Nothing) Then
-                Me.tableFaturas.InitVars
-            End If
-        End If
         Me.relationEmpresa_CabecECL = Me.Relations("Empresa_CabecECL")
-        Me.relationCabecECL_Faturas = Me.Relations("CabecECL_Faturas")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -262,12 +235,8 @@ Partial Public Class DataSetEncFaturadas
         MyBase.Tables.Add(Me.tableEmpresa)
         Me.tableCabecDoc = New CabecDocDataTable()
         MyBase.Tables.Add(Me.tableCabecDoc)
-        Me.tableFaturas = New FaturasDataTable()
-        MyBase.Tables.Add(Me.tableFaturas)
         Me.relationEmpresa_CabecECL = New Global.System.Data.DataRelation("Empresa_CabecECL", New Global.System.Data.DataColumn() {Me.tableEmpresa.EmpresaColumn}, New Global.System.Data.DataColumn() {Me.tableCabecDoc.EmpresaColumn}, false)
         Me.Relations.Add(Me.relationEmpresa_CabecECL)
-        Me.relationCabecECL_Faturas = New Global.System.Data.DataRelation("CabecECL_Faturas", New Global.System.Data.DataColumn() {Me.tableCabecDoc.IDColumn}, New Global.System.Data.DataColumn() {Me.tableFaturas.IdCabecDocColumn}, false)
-        Me.Relations.Add(Me.relationCabecECL_Faturas)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -279,12 +248,6 @@ Partial Public Class DataSetEncFaturadas
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeCabecDoc() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeFaturas() As Boolean
         Return false
     End Function
     
@@ -351,9 +314,6 @@ Partial Public Class DataSetEncFaturadas
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub CabecDocRowChangeEventHandler(ByVal sender As Object, ByVal e As CabecDocRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub FaturasRowChangeEventHandler(ByVal sender As Object, ByVal e As FaturasRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -630,21 +590,27 @@ Partial Public Class DataSetEncFaturadas
     Partial Public Class CabecDocDataTable
         Inherits Global.System.Data.TypedTableBase(Of CabecDocRow)
         
-        Private columnID As Global.System.Data.DataColumn
-        
-        Private columnSerie As Global.System.Data.DataColumn
-        
-        Private columnNumDoc As Global.System.Data.DataColumn
-        
-        Private columnEntidade As Global.System.Data.DataColumn
-        
-        Private columnNome As Global.System.Data.DataColumn
-        
-        Private columnData As Global.System.Data.DataColumn
-        
         Private columnEmpresa As Global.System.Data.DataColumn
         
-        Private columnTotal As Global.System.Data.DataColumn
+        Private columnTipoFa As Global.System.Data.DataColumn
+        
+        Private columnSerieFa As Global.System.Data.DataColumn
+        
+        Private columnNumFa As Global.System.Data.DataColumn
+        
+        Private columnDataFa As Global.System.Data.DataColumn
+        
+        Private columnTotaFa As Global.System.Data.DataColumn
+        
+        Private columnTipoEcl As Global.System.Data.DataColumn
+        
+        Private columnSerieEcl As Global.System.Data.DataColumn
+        
+        Private columnNumEcl As Global.System.Data.DataColumn
+        
+        Private columnDataEcl As Global.System.Data.DataColumn
+        
+        Private columnTotalEcl As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -683,54 +649,6 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SerieColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSerie
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NumDocColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNumDoc
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property EntidadeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnEntidade
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NomeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNome
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property DataColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnData
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property EmpresaColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnEmpresa
@@ -739,9 +657,81 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property TotalColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property TipoFaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnTotal
+                Return Me.columnTipoFa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SerieFaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSerieFa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NumFaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNumFa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DataFaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDataFa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TotaFaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTotaFa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TipoEclColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoEcl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SerieEclColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSerieEcl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NumEclColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNumEcl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DataEclColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDataEcl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TotalEclColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTotalEcl
             End Get
         End Property
         
@@ -782,21 +772,15 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddCabecDocRow(ByVal ID As String, ByVal Serie As Single, ByVal NumDoc As Single, ByVal Entidade As String, ByVal Nome As String, ByVal Data As Date, ByVal parentEmpresaRowByEmpresa_CabecECL As EmpresaRow, ByVal Total As Double) As CabecDocRow
+        Public Overloads Function AddCabecDocRow(ByVal parentEmpresaRowByEmpresa_CabecECL As EmpresaRow, ByVal TipoFa As String, ByVal SerieFa As String, ByVal NumFa As String, ByVal DataFa As Date, ByVal TotaFa As Double, ByVal TipoEcl As String, ByVal SerieEcl As String, ByVal NumEcl As String, ByVal DataEcl As Date, ByVal TotalEcl As Double) As CabecDocRow
             Dim rowCabecDocRow As CabecDocRow = CType(Me.NewRow,CabecDocRow)
-            Dim columnValuesArray() As Object = New Object() {ID, Serie, NumDoc, Entidade, Nome, Data, Nothing, Total}
+            Dim columnValuesArray() As Object = New Object() {Nothing, TipoFa, SerieFa, NumFa, DataFa, TotaFa, TipoEcl, SerieEcl, NumEcl, DataEcl, TotalEcl}
             If (Not (parentEmpresaRowByEmpresa_CabecECL) Is Nothing) Then
-                columnValuesArray(6) = parentEmpresaRowByEmpresa_CabecECL(0)
+                columnValuesArray(0) = parentEmpresaRowByEmpresa_CabecECL(0)
             End If
             rowCabecDocRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCabecDocRow)
             Return rowCabecDocRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByID(ByVal ID As String) As CabecDocRow
-            Return CType(Me.Rows.Find(New Object() {ID}),CabecDocRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -816,40 +800,44 @@ Partial Public Class DataSetEncFaturadas
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnID = MyBase.Columns("ID")
-            Me.columnSerie = MyBase.Columns("Serie")
-            Me.columnNumDoc = MyBase.Columns("NumDoc")
-            Me.columnEntidade = MyBase.Columns("Entidade")
-            Me.columnNome = MyBase.Columns("Nome")
-            Me.columnData = MyBase.Columns("Data")
             Me.columnEmpresa = MyBase.Columns("Empresa")
-            Me.columnTotal = MyBase.Columns("Total")
+            Me.columnTipoFa = MyBase.Columns("TipoFa")
+            Me.columnSerieFa = MyBase.Columns("SerieFa")
+            Me.columnNumFa = MyBase.Columns("NumFa")
+            Me.columnDataFa = MyBase.Columns("DataFa")
+            Me.columnTotaFa = MyBase.Columns("TotaFa")
+            Me.columnTipoEcl = MyBase.Columns("TipoEcl")
+            Me.columnSerieEcl = MyBase.Columns("SerieEcl")
+            Me.columnNumEcl = MyBase.Columns("NumEcl")
+            Me.columnDataEcl = MyBase.Columns("DataEcl")
+            Me.columnTotalEcl = MyBase.Columns("TotalEcl")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnID)
-            Me.columnSerie = New Global.System.Data.DataColumn("Serie", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSerie)
-            Me.columnNumDoc = New Global.System.Data.DataColumn("NumDoc", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNumDoc)
-            Me.columnEntidade = New Global.System.Data.DataColumn("Entidade", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnEntidade)
-            Me.columnNome = New Global.System.Data.DataColumn("Nome", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNome)
-            Me.columnData = New Global.System.Data.DataColumn("Data", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnData)
             Me.columnEmpresa = New Global.System.Data.DataColumn("Empresa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEmpresa)
-            Me.columnTotal = New Global.System.Data.DataColumn("Total", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTotal)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("CabecDocKey1", New Global.System.Data.DataColumn() {Me.columnID}, true))
-            Me.columnID.AllowDBNull = false
-            Me.columnID.Unique = true
-            Me.columnNumDoc.Caption = "Num. Doc."
-            Me.columnData.Caption = "Data Doc."
+            Me.columnTipoFa = New Global.System.Data.DataColumn("TipoFa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoFa)
+            Me.columnSerieFa = New Global.System.Data.DataColumn("SerieFa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSerieFa)
+            Me.columnNumFa = New Global.System.Data.DataColumn("NumFa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNumFa)
+            Me.columnDataFa = New Global.System.Data.DataColumn("DataFa", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDataFa)
+            Me.columnTotaFa = New Global.System.Data.DataColumn("TotaFa", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTotaFa)
+            Me.columnTipoEcl = New Global.System.Data.DataColumn("TipoEcl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoEcl)
+            Me.columnSerieEcl = New Global.System.Data.DataColumn("SerieEcl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSerieEcl)
+            Me.columnNumEcl = New Global.System.Data.DataColumn("NumEcl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNumEcl)
+            Me.columnDataEcl = New Global.System.Data.DataColumn("DataEcl", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDataEcl)
+            Me.columnTotalEcl = New Global.System.Data.DataColumn("TotalEcl", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTotalEcl)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -936,353 +924,6 @@ Partial Public Class DataSetEncFaturadas
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "CabecDocDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class FaturasDataTable
-        Inherits Global.System.Data.TypedTableBase(Of FaturasRow)
-        
-        Private columnIdCabecDoc As Global.System.Data.DataColumn
-        
-        Private columnTipoDoc As Global.System.Data.DataColumn
-        
-        Private columnSerie As Global.System.Data.DataColumn
-        
-        Private columnNumDoc As Global.System.Data.DataColumn
-        
-        Private columnData As Global.System.Data.DataColumn
-        
-        Private columnCliente As Global.System.Data.DataColumn
-        
-        Private columnNome As Global.System.Data.DataColumn
-        
-        Private columnTotal As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "Faturas"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property IdCabecDocColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIdCabecDoc
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property TipoDocColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTipoDoc
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property SerieColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSerie
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NumDocColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNumDoc
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property DataColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnData
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCliente
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NomeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNome
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property TotalColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTotal
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As FaturasRow
-            Get
-                Return CType(Me.Rows(index),FaturasRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event FaturasRowChanging As FaturasRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event FaturasRowChanged As FaturasRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event FaturasRowDeleting As FaturasRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event FaturasRowDeleted As FaturasRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddFaturasRow(ByVal row As FaturasRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddFaturasRow(ByVal parentCabecDocRowByCabecECL_Faturas As CabecDocRow, ByVal TipoDoc As String, ByVal Serie As String, ByVal NumDoc As Integer, ByVal Data As Date, ByVal Cliente As String, ByVal Nome As String, ByVal Total As Double) As FaturasRow
-            Dim rowFaturasRow As FaturasRow = CType(Me.NewRow,FaturasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, TipoDoc, Serie, NumDoc, Data, Cliente, Nome, Total}
-            If (Not (parentCabecDocRowByCabecECL_Faturas) Is Nothing) Then
-                columnValuesArray(0) = parentCabecDocRowByCabecECL_Faturas(0)
-            End If
-            rowFaturasRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowFaturasRow)
-            Return rowFaturasRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As FaturasDataTable = CType(MyBase.Clone,FaturasDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New FaturasDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnIdCabecDoc = MyBase.Columns("IdCabecDoc")
-            Me.columnTipoDoc = MyBase.Columns("TipoDoc")
-            Me.columnSerie = MyBase.Columns("Serie")
-            Me.columnNumDoc = MyBase.Columns("NumDoc")
-            Me.columnData = MyBase.Columns("Data")
-            Me.columnCliente = MyBase.Columns("Cliente")
-            Me.columnNome = MyBase.Columns("Nome")
-            Me.columnTotal = MyBase.Columns("Total")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnIdCabecDoc = New Global.System.Data.DataColumn("IdCabecDoc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIdCabecDoc)
-            Me.columnTipoDoc = New Global.System.Data.DataColumn("TipoDoc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTipoDoc)
-            Me.columnSerie = New Global.System.Data.DataColumn("Serie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSerie)
-            Me.columnNumDoc = New Global.System.Data.DataColumn("NumDoc", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNumDoc)
-            Me.columnData = New Global.System.Data.DataColumn("Data", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnData)
-            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCliente)
-            Me.columnNome = New Global.System.Data.DataColumn("Nome", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNome)
-            Me.columnTotal = New Global.System.Data.DataColumn("Total", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTotal)
-            Me.columnTotal.DefaultValue = CType(0R,Double)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewFaturasRow() As FaturasRow
-            Return CType(Me.NewRow,FaturasRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New FaturasRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(FaturasRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.FaturasRowChangedEvent) Is Nothing) Then
-                RaiseEvent FaturasRowChanged(Me, New FaturasRowChangeEvent(CType(e.Row,FaturasRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.FaturasRowChangingEvent) Is Nothing) Then
-                RaiseEvent FaturasRowChanging(Me, New FaturasRowChangeEvent(CType(e.Row,FaturasRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.FaturasRowDeletedEvent) Is Nothing) Then
-                RaiseEvent FaturasRowDeleted(Me, New FaturasRowChangeEvent(CType(e.Row,FaturasRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.FaturasRowDeletingEvent) Is Nothing) Then
-                RaiseEvent FaturasRowDeleting(Me, New FaturasRowChangeEvent(CType(e.Row,FaturasRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveFaturasRow(ByVal row As FaturasRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DataSetEncFaturadas = New DataSetEncFaturadas()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "FaturasDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -1423,92 +1064,6 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ID() As String
-            Get
-                Return CType(Me(Me.tableCabecDoc.IDColumn),String)
-            End Get
-            Set
-                Me(Me.tableCabecDoc.IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Serie() As Single
-            Get
-                Try 
-                    Return CType(Me(Me.tableCabecDoc.SerieColumn),Single)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Serie' in table 'CabecDoc' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCabecDoc.SerieColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property NumDoc() As Single
-            Get
-                Try 
-                    Return CType(Me(Me.tableCabecDoc.NumDocColumn),Single)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumDoc' in table 'CabecDoc' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCabecDoc.NumDocColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Entidade() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCabecDoc.EntidadeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Entidade' in table 'CabecDoc' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCabecDoc.EntidadeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Nome() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCabecDoc.NomeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Nome' in table 'CabecDoc' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCabecDoc.NomeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Data() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableCabecDoc.DataColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Data' in table 'CabecDoc' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCabecDoc.DataColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property Empresa() As String
             Get
                 Try 
@@ -1524,16 +1079,151 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Total() As Double
+        Public Property TipoFa() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCabecDoc.TotalColumn),Double)
+                    Return CType(Me(Me.tableCabecDoc.TipoFaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Total' in table 'CabecDoc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TipoFa' in table 'CabecDoc' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCabecDoc.TotalColumn) = value
+                Me(Me.tableCabecDoc.TipoFaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SerieFa() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.SerieFaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SerieFa' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.SerieFaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NumFa() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.NumFaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumFa' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.NumFaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DataFa() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.DataFaColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DataFa' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.DataFaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TotaFa() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.TotaFaColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TotaFa' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.TotaFaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TipoEcl() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.TipoEclColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TipoEcl' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.TipoEclColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SerieEcl() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.SerieEclColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SerieEcl' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.SerieEclColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NumEcl() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.NumEclColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumEcl' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.NumEclColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DataEcl() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.DataEclColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DataEcl' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.DataEclColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TotalEcl() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableCabecDoc.TotalEclColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TotalEcl' in table 'CabecDoc' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCabecDoc.TotalEclColumn) = value
             End Set
         End Property
         
@@ -1550,66 +1240,6 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSerieNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.SerieColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSerieNull()
-            Me(Me.tableCabecDoc.SerieColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNumDocNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.NumDocColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNumDocNull()
-            Me(Me.tableCabecDoc.NumDocColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsEntidadeNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.EntidadeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetEntidadeNull()
-            Me(Me.tableCabecDoc.EntidadeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNomeNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.NomeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNomeNull()
-            Me(Me.tableCabecDoc.NomeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsDataNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.DataColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetDataNull()
-            Me(Me.tableCabecDoc.DataColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsEmpresaNull() As Boolean
             Return Me.IsNull(Me.tableCabecDoc.EmpresaColumn)
         End Function
@@ -1622,267 +1252,122 @@ Partial Public Class DataSetEncFaturadas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsTotalNull() As Boolean
-            Return Me.IsNull(Me.tableCabecDoc.TotalColumn)
+        Public Function IsTipoFaNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.TipoFaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetTotalNull()
-            Me(Me.tableCabecDoc.TotalColumn) = Global.System.Convert.DBNull
+        Public Sub SetTipoFaNull()
+            Me(Me.tableCabecDoc.TipoFaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetFaturasRows() As FaturasRow()
-            If (Me.Table.ChildRelations("CabecECL_Faturas") Is Nothing) Then
-                Return New FaturasRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("CabecECL_Faturas")),FaturasRow())
-            End If
+        Public Function IsSerieFaNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.SerieFaColumn)
         End Function
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class FaturasRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableFaturas As FaturasDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableFaturas = CType(Me.Table,FaturasDataTable)
+        Public Sub SetSerieFaNull()
+            Me(Me.tableCabecDoc.SerieFaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property IdCabecDoc() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.IdCabecDocColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'IdCabecDoc' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.IdCabecDocColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property TipoDoc() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.TipoDocColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'TipoDoc' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.TipoDocColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Serie() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.SerieColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Serie' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.SerieColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property NumDoc() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.NumDocColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'NumDoc' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.NumDocColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Data() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.DataColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Data' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.DataColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Cliente() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.ClienteColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Cliente' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.ClienteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Nome() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.NomeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Nome' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.NomeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Total() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tableFaturas.TotalColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Total' in table 'Faturas' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableFaturas.TotalColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property CabecDocRow() As CabecDocRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("CabecECL_Faturas")),CabecDocRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("CabecECL_Faturas"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsIdCabecDocNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.IdCabecDocColumn)
+        Public Function IsNumFaNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.NumFaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetIdCabecDocNull()
-            Me(Me.tableFaturas.IdCabecDocColumn) = Global.System.Convert.DBNull
+        Public Sub SetNumFaNull()
+            Me(Me.tableCabecDoc.NumFaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsTipoDocNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.TipoDocColumn)
+        Public Function IsDataFaNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.DataFaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetTipoDocNull()
-            Me(Me.tableFaturas.TipoDocColumn) = Global.System.Convert.DBNull
+        Public Sub SetDataFaNull()
+            Me(Me.tableCabecDoc.DataFaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsSerieNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.SerieColumn)
+        Public Function IsTotaFaNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.TotaFaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetSerieNull()
-            Me(Me.tableFaturas.SerieColumn) = Global.System.Convert.DBNull
+        Public Sub SetTotaFaNull()
+            Me(Me.tableCabecDoc.TotaFaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNumDocNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.NumDocColumn)
+        Public Function IsTipoEclNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.TipoEclColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNumDocNull()
-            Me(Me.tableFaturas.NumDocColumn) = Global.System.Convert.DBNull
+        Public Sub SetTipoEclNull()
+            Me(Me.tableCabecDoc.TipoEclColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsDataNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.DataColumn)
+        Public Function IsSerieEclNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.SerieEclColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetDataNull()
-            Me(Me.tableFaturas.DataColumn) = Global.System.Convert.DBNull
+        Public Sub SetSerieEclNull()
+            Me(Me.tableCabecDoc.SerieEclColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsClienteNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.ClienteColumn)
+        Public Function IsNumEclNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.NumEclColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetClienteNull()
-            Me(Me.tableFaturas.ClienteColumn) = Global.System.Convert.DBNull
+        Public Sub SetNumEclNull()
+            Me(Me.tableCabecDoc.NumEclColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNomeNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.NomeColumn)
+        Public Function IsDataEclNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.DataEclColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNomeNull()
-            Me(Me.tableFaturas.NomeColumn) = Global.System.Convert.DBNull
+        Public Sub SetDataEclNull()
+            Me(Me.tableCabecDoc.DataEclColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsTotalNull() As Boolean
-            Return Me.IsNull(Me.tableFaturas.TotalColumn)
+        Public Function IsTotalEclNull() As Boolean
+            Return Me.IsNull(Me.tableCabecDoc.TotalEclColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetTotalNull()
-            Me(Me.tableFaturas.TotalColumn) = Global.System.Convert.DBNull
+        Public Sub SetTotalEclNull()
+            Me(Me.tableCabecDoc.TotalEclColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1944,42 +1429,6 @@ Partial Public Class DataSetEncFaturadas
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As CabecDocRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class FaturasRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As FaturasRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As FaturasRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As FaturasRow
             Get
                 Return Me.eventRow
             End Get

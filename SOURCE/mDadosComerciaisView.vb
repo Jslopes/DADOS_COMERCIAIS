@@ -45,7 +45,7 @@ Module mDadosComerciaisView
 
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
         End Try
     End Sub
 
@@ -89,7 +89,7 @@ Module mDadosComerciaisView
             gv.OptionsDetail.ShowDetailTabs = False
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
         End Try
     End Sub
 
@@ -134,7 +134,7 @@ Module mDadosComerciaisView
             gv.OptionsDetail.ShowDetailTabs = False
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
         End Try
     End Sub
     Public Sub ConfiguraViewDetalhe2(gv As GridView)
@@ -177,7 +177,7 @@ Module mDadosComerciaisView
             gv.OptionsDetail.ShowDetailTabs = False
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Definir grelha", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao desenhar a grelha", True)
         End Try
 
     End Sub

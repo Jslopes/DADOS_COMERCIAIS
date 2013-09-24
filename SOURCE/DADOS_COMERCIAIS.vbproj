@@ -163,21 +163,19 @@
     <Compile Include="frmSobre.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="m1DadosComerciais.vb" />
     <Compile Include="m2VendasAnuais.vb" />
     <Compile Include="m4Faturado.vb" />
     <Compile Include="m5Extrato.vb" />
     <Compile Include="m6DocAberto.vb" />
-    <Compile Include="mBackup.vb" />
     <Compile Include="mCalculo.vb" />
     <Compile Include="mDadosComerciaisView.vb" />
     <Compile Include="mDataSet.vb" />
     <Compile Include="m3EmCarteira.vb" />
     <Compile Include="mForms.vb" />
     <Compile Include="mGeral.vb" />
-    <Compile Include="mGeral1.vb" />
     <Compile Include="mLayout.vb" />
     <Compile Include="mNumericos.vb" />
-    <Compile Include="mPedidosEmCarteira.vb" />
     <Compile Include="mPrint.vb" />
     <Compile Include="mXExportGrid.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

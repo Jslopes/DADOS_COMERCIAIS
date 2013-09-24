@@ -4,19 +4,19 @@ Imports DevExpress.XtraGrid.Views.Grid
 Module m5Extrato
     Public Sub AtualizarExtrato(dsExtrato As DataSet, Cliente As String, _
                           gv51 As GridView, gv52 As GridView, _
-                          DataInicial As String, DataFinal As String)
+                          DataInicial As String, DataFinal As String, StrConectFA As String, StrConectKL As String, StrConectJU As String)
         Try
             'Create a connection object. 
-            Dim StrConectFA As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectFA As String = Plataforma.BaseDados.DaConnectionString(Plataforma.BaseDados.DaNomeBDdaEmpresa(Plataforma.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
 
-            CarregaEmpresas(dsExtrato)
+            CarregaEmpresas(dsExtrato, StrConectFA.Replace("PRIFASTIL", "PRIEMPRE"))
 
             dsExtrato.Tables("Extrato").Clear()
-            CarregaExtrato(dsExtrato, StrConectFA, Cliente, CStr(PlataformaFA.Contexto.Empresa.CodEmp), DataInicial, DataFinal)
-            CarregaExtrato(dsExtrato, StrConectKL, Cliente, CStr(PlataformaKL.Contexto.Empresa.CodEmp), DataInicial, DataFinal)
-            CarregaExtrato(dsExtrato, StrConectJU, Cliente, CStr(PlataformaJU.Contexto.Empresa.CodEmp), DataInicial, DataFinal)
+            CarregaExtrato(dsExtrato, StrConectFA, Cliente, CStr("FASTIL"), DataInicial, DataFinal)
+            CarregaExtrato(dsExtrato, StrConectKL, Cliente, CStr("KLICK"), DataInicial, DataFinal)
+            CarregaExtrato(dsExtrato, StrConectJU, Cliente, CStr("JUALTEX"), DataInicial, DataFinal)
 
             'Configurar carateristicas das colunas
             Dim i As Integer = 0
@@ -78,7 +78,7 @@ Module m5Extrato
             Next
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
         End Try
     End Sub
 

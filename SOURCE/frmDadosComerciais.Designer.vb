@@ -28,7 +28,6 @@ Partial Class frmDadosComerciais
         Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDadosComerciais))
         Me.GridView32 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -56,29 +55,23 @@ Partial Class frmDadosComerciais
         Me.colProduzido = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridView42 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEmpresa4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTipoFa = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSerieFa = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNumFa = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDataFa = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotaFa = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTipoEcl = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSerieEcl = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNumEcl = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDataEcl = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotalEcl = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl4 = New DevExpress.XtraGrid.GridControl()
         Me.BindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSetEncFaturadas1 = New mcr_DadosComerciais.DataSetEncFaturadas()
         Me.GridView41 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn19 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView43 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colIdCabecDoc1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colTipoDoc = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSerie1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNumDoc1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colData1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNome2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colTotal1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridView52 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colEmpresa3 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -159,7 +152,7 @@ Partial Class frmDadosComerciais
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextEdit11 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit10 = New DevExpress.XtraEditors.TextEdit()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btContatos = New DevExpress.XtraEditors.SimpleButton()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextEdit9 = New DevExpress.XtraEditors.TextEdit()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -283,7 +276,6 @@ Partial Class frmDadosComerciais
         CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetEncFaturadas1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView52, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -588,82 +580,105 @@ Partial Class frmDadosComerciais
         Me.GridView42.Appearance.Row.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridView42.Appearance.Row.Options.UseFont = True
         Me.GridView42.BestFitMaxRowCount = 1
-        Me.GridView42.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
+        Me.GridView42.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colEmpresa4, Me.colTipoFa, Me.colSerieFa, Me.colNumFa, Me.colDataFa, Me.colTotaFa, Me.colTipoEcl, Me.colSerieEcl, Me.colNumEcl, Me.colDataEcl, Me.colTotalEcl})
         Me.GridView42.GridControl = Me.GridControl4
         Me.GridView42.Name = "GridView42"
         Me.GridView42.OptionsView.ColumnAutoWidth = False
         '
-        'GridColumn2
+        'colEmpresa4
         '
-        Me.GridColumn2.FieldName = "ID"
-        Me.GridColumn2.Name = "GridColumn2"
+        Me.colEmpresa4.FieldName = "Empresa"
+        Me.colEmpresa4.Name = "colEmpresa4"
         '
-        'GridColumn3
+        'colTipoFa
         '
-        Me.GridColumn3.FieldName = "Serie"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 0
+        Me.colTipoFa.Caption = "Tipo Doc."
+        Me.colTipoFa.FieldName = "TipoFa"
+        Me.colTipoFa.Name = "colTipoFa"
+        Me.colTipoFa.Visible = True
+        Me.colTipoFa.VisibleIndex = 0
         '
-        'GridColumn4
+        'colSerieFa
         '
-        Me.GridColumn4.Caption = "Num. Doc."
-        Me.GridColumn4.FieldName = "NumDoc"
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 1
+        Me.colSerieFa.Caption = "Série Doc."
+        Me.colSerieFa.FieldName = "SerieFa"
+        Me.colSerieFa.Name = "colSerieFa"
+        Me.colSerieFa.Visible = True
+        Me.colSerieFa.VisibleIndex = 1
         '
-        'GridColumn5
+        'colNumFa
         '
-        Me.GridColumn5.FieldName = "Entidade"
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 2
+        Me.colNumFa.Caption = "Num.  Doc."
+        Me.colNumFa.FieldName = "NumFa"
+        Me.colNumFa.Name = "colNumFa"
+        Me.colNumFa.Visible = True
+        Me.colNumFa.VisibleIndex = 2
         '
-        'GridColumn6
+        'colDataFa
         '
-        Me.GridColumn6.Caption = "NomeCliente"
-        Me.GridColumn6.FieldName = "Nome"
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 3
-        Me.GridColumn6.Width = 300
+        Me.colDataFa.Caption = "Data Doc."
+        Me.colDataFa.FieldName = "DataFa"
+        Me.colDataFa.Name = "colDataFa"
+        Me.colDataFa.Visible = True
+        Me.colDataFa.VisibleIndex = 3
+        Me.colDataFa.Width = 90
         '
-        'GridColumn7
+        'colTotaFa
         '
-        Me.GridColumn7.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn7.Caption = "Data Doc."
-        Me.GridColumn7.FieldName = "Data"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 4
-        Me.GridColumn7.Width = 100
+        Me.colTotaFa.Caption = "Tatal Faturado"
+        Me.colTotaFa.FieldName = "TotaFa"
+        Me.colTotaFa.Name = "colTotaFa"
+        Me.colTotaFa.Visible = True
+        Me.colTotaFa.VisibleIndex = 4
+        Me.colTotaFa.Width = 100
         '
-        'GridColumn8
+        'colTipoEcl
         '
-        Me.GridColumn8.FieldName = "Empresa"
-        Me.GridColumn8.Name = "GridColumn8"
+        Me.colTipoEcl.Caption = "Tipo Doc."
+        Me.colTipoEcl.FieldName = "TipoEcl"
+        Me.colTipoEcl.Name = "colTipoEcl"
+        Me.colTipoEcl.Visible = True
+        Me.colTipoEcl.VisibleIndex = 5
         '
-        'GridColumn9
+        'colSerieEcl
         '
-        Me.GridColumn9.Caption = "Total"
-        Me.GridColumn9.DisplayFormat.FormatString = "N2"
-        Me.GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn9.FieldName = "Total"
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 5
-        Me.GridColumn9.Width = 100
+        Me.colSerieEcl.Caption = "Série  Doc."
+        Me.colSerieEcl.FieldName = "SerieEcl"
+        Me.colSerieEcl.Name = "colSerieEcl"
+        Me.colSerieEcl.Visible = True
+        Me.colSerieEcl.VisibleIndex = 6
+        '
+        'colNumEcl
+        '
+        Me.colNumEcl.Caption = "Num.  Doc."
+        Me.colNumEcl.FieldName = "NumEcl"
+        Me.colNumEcl.Name = "colNumEcl"
+        Me.colNumEcl.Visible = True
+        Me.colNumEcl.VisibleIndex = 7
+        '
+        'colDataEcl
+        '
+        Me.colDataEcl.Caption = "Data  Doc."
+        Me.colDataEcl.FieldName = "DataEcl"
+        Me.colDataEcl.Name = "colDataEcl"
+        Me.colDataEcl.Visible = True
+        Me.colDataEcl.VisibleIndex = 8
+        Me.colDataEcl.Width = 90
+        '
+        'colTotalEcl
+        '
+        Me.colTotalEcl.Caption = "Total Enc."
+        Me.colTotalEcl.FieldName = "TotalEcl"
+        Me.colTotalEcl.Name = "colTotalEcl"
+        Me.colTotalEcl.Visible = True
+        Me.colTotalEcl.VisibleIndex = 9
+        Me.colTotalEcl.Width = 100
         '
         'GridControl4
         '
         Me.GridControl4.DataSource = Me.BindingSource2
         Me.GridControl4.Dock = System.Windows.Forms.DockStyle.Fill
         GridLevelNode3.LevelTemplate = Me.GridView42
-        GridLevelNode4.LevelTemplate = Me.GridView43
-        GridLevelNode4.RelationName = "CabecECL_Faturas"
-        GridLevelNode3.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
         GridLevelNode3.RelationName = "Empresa_CabecECL"
         Me.GridControl4.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
         Me.GridControl4.Location = New System.Drawing.Point(0, 0)
@@ -671,7 +686,7 @@ Partial Class frmDadosComerciais
         Me.GridControl4.Name = "GridControl4"
         Me.GridControl4.Size = New System.Drawing.Size(966, 449)
         Me.GridControl4.TabIndex = 2
-        Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView41, Me.GridView43, Me.GridView6, Me.GridView42})
+        Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView41, Me.GridView6, Me.GridView42})
         '
         'BindingSource2
         '
@@ -711,74 +726,6 @@ Partial Class frmDadosComerciais
         Me.GridColumn19.Name = "GridColumn19"
         Me.GridColumn19.Visible = True
         Me.GridColumn19.VisibleIndex = 1
-        '
-        'GridView43
-        '
-        Me.GridView43.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colIdCabecDoc1, Me.colTipoDoc, Me.colSerie1, Me.colNumDoc1, Me.colData1, Me.colCliente, Me.colNome2, Me.colTotal1})
-        Me.GridView43.GridControl = Me.GridControl4
-        Me.GridView43.Name = "GridView43"
-        '
-        'colIdCabecDoc1
-        '
-        Me.colIdCabecDoc1.FieldName = "IdCabecDoc"
-        Me.colIdCabecDoc1.Name = "colIdCabecDoc1"
-        '
-        'colTipoDoc
-        '
-        Me.colTipoDoc.Caption = "Tipo Doc."
-        Me.colTipoDoc.FieldName = "TipoDoc"
-        Me.colTipoDoc.Name = "colTipoDoc"
-        Me.colTipoDoc.Visible = True
-        Me.colTipoDoc.VisibleIndex = 0
-        '
-        'colSerie1
-        '
-        Me.colSerie1.Caption = "Série"
-        Me.colSerie1.FieldName = "Serie"
-        Me.colSerie1.Name = "colSerie1"
-        Me.colSerie1.Visible = True
-        Me.colSerie1.VisibleIndex = 1
-        '
-        'colNumDoc1
-        '
-        Me.colNumDoc1.Caption = "Num. Doc."
-        Me.colNumDoc1.FieldName = "NumDoc"
-        Me.colNumDoc1.Name = "colNumDoc1"
-        Me.colNumDoc1.Visible = True
-        Me.colNumDoc1.VisibleIndex = 2
-        '
-        'colData1
-        '
-        Me.colData1.Caption = "Data"
-        Me.colData1.FieldName = "Data"
-        Me.colData1.Name = "colData1"
-        Me.colData1.Visible = True
-        Me.colData1.VisibleIndex = 3
-        Me.colData1.Width = 100
-        '
-        'colCliente
-        '
-        Me.colCliente.Caption = "Cliente"
-        Me.colCliente.FieldName = "Cliente"
-        Me.colCliente.Name = "colCliente"
-        Me.colCliente.Visible = True
-        Me.colCliente.VisibleIndex = 4
-        '
-        'colNome2
-        '
-        Me.colNome2.Caption = "Nome"
-        Me.colNome2.FieldName = "Nome"
-        Me.colNome2.Name = "colNome2"
-        Me.colNome2.Visible = True
-        Me.colNome2.VisibleIndex = 5
-        '
-        'colTotal1
-        '
-        Me.colTotal1.Caption = "Total"
-        Me.colTotal1.FieldName = "Total"
-        Me.colTotal1.Name = "colTotal1"
-        Me.colTotal1.Visible = True
-        Me.colTotal1.VisibleIndex = 6
         '
         'GridView6
         '
@@ -858,13 +805,13 @@ Partial Class frmDadosComerciais
         '
         Me.GridControl5.DataSource = Me.BindingSource4
         Me.GridControl5.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode5.LevelTemplate = Me.GridView52
-        GridLevelNode5.RelationName = "Empresa_Extrato"
-        Me.GridControl5.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
-        Me.GridControl5.Location = New System.Drawing.Point(3, 62)
+        GridLevelNode4.LevelTemplate = Me.GridView52
+        GridLevelNode4.RelationName = "Empresa_Extrato"
+        Me.GridControl5.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
+        Me.GridControl5.Location = New System.Drawing.Point(3, 63)
         Me.GridControl5.MainView = Me.GridView51
         Me.GridControl5.Name = "GridControl5"
-        Me.GridControl5.Size = New System.Drawing.Size(960, 384)
+        Me.GridControl5.Size = New System.Drawing.Size(960, 383)
         Me.GridControl5.TabIndex = 5
         Me.GridControl5.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView51, Me.GridView7, Me.GridView3, Me.GridView52})
         '
@@ -1076,9 +1023,9 @@ Partial Class frmDadosComerciais
         '
         Me.GridControl6.DataSource = Me.BindingSource3
         Me.GridControl6.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode6.LevelTemplate = Me.GridView62
-        GridLevelNode6.RelationName = "Empresa_Pendentes"
-        Me.GridControl6.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode6})
+        GridLevelNode5.LevelTemplate = Me.GridView62
+        GridLevelNode5.RelationName = "Empresa_Pendentes"
+        Me.GridControl6.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
         Me.GridControl6.Location = New System.Drawing.Point(0, 0)
         Me.GridControl6.MainView = Me.GridView61
         Me.GridControl6.Name = "GridControl6"
@@ -1407,7 +1354,7 @@ Partial Class frmDadosComerciais
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.TextEdit11)
         Me.GroupBox1.Controls.Add(Me.TextEdit10)
-        Me.GroupBox1.Controls.Add(Me.SimpleButton1)
+        Me.GroupBox1.Controls.Add(Me.btContatos)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.TextEdit9)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -1463,13 +1410,13 @@ Partial Class frmDadosComerciais
         Me.TextEdit10.Size = New System.Drawing.Size(52, 20)
         Me.TextEdit10.TabIndex = 70
         '
-        'SimpleButton1
+        'btContatos
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(650, 162)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(246, 20)
-        Me.SimpleButton1.TabIndex = 69
-        Me.SimpleButton1.Text = "Ver mais contatos"
+        Me.btContatos.Location = New System.Drawing.Point(650, 162)
+        Me.btContatos.Name = "btContatos"
+        Me.btContatos.Size = New System.Drawing.Size(246, 20)
+        Me.btContatos.TabIndex = 69
+        Me.btContatos.Text = "Ver mais contatos"
         '
         'Label7
         '
@@ -2550,15 +2497,15 @@ Partial Class frmDadosComerciais
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.GridControl5, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.PanelControl3, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.16964!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.83036!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(966, 449)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -2571,13 +2518,13 @@ Partial Class frmDadosComerciais
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl3.Location = New System.Drawing.Point(3, 3)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(960, 53)
+        Me.PanelControl3.Size = New System.Drawing.Size(960, 54)
         Me.PanelControl3.TabIndex = 6
         '
         'dtp2
         '
         Me.dtp2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp2.Location = New System.Drawing.Point(328, 15)
+        Me.dtp2.Location = New System.Drawing.Point(328, 17)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(105, 21)
         Me.dtp2.TabIndex = 17
@@ -2585,7 +2532,7 @@ Partial Class frmDadosComerciais
         'dtp1
         '
         Me.dtp1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp1.Location = New System.Drawing.Point(124, 15)
+        Me.dtp1.Location = New System.Drawing.Point(124, 17)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(105, 21)
         Me.dtp1.TabIndex = 16
@@ -2593,7 +2540,7 @@ Partial Class frmDadosComerciais
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(258, 21)
+        Me.Label9.Location = New System.Drawing.Point(258, 23)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(64, 13)
         Me.Label9.TabIndex = 15
@@ -2602,7 +2549,7 @@ Partial Class frmDadosComerciais
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(48, 19)
+        Me.Label10.Location = New System.Drawing.Point(48, 21)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(70, 13)
         Me.Label10.TabIndex = 14
@@ -2678,7 +2625,6 @@ Partial Class frmDadosComerciais
         CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSetEncFaturadas1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView43, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView52, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl5, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2814,7 +2760,7 @@ Partial Class frmDadosComerciais
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents TextEdit11 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEdit10 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btContatos As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextEdit9 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -2888,27 +2834,10 @@ Partial Class frmDadosComerciais
     Friend WithEvents BindingSource2 As System.Windows.Forms.BindingSource
     Friend WithEvents DataSetEncFaturadas1 As mcr_DadosComerciais.DataSetEncFaturadas
     Friend WithEvents GridView42 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridView43 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView41 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn18 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn19 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridView6 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colIdCabecDoc1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colTipoDoc As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colSerie1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNumDoc1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colData1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNome2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colTotal1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents lb312 As System.Windows.Forms.Label
     Friend WithEvents txtVnd312 As DevExpress.XtraEditors.ButtonEdit
@@ -3020,4 +2949,15 @@ Partial Class frmDadosComerciais
     Friend WithEvents colCredito As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents colEmpresa4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTipoFa As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSerieFa As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNumFa As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDataFa As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTotaFa As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTipoEcl As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSerieEcl As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNumEcl As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDataEcl As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTotalEcl As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -23,11 +23,11 @@
         '==================== Carregar Parametros ===================
         On Error GoTo ERRO
         '-----CARREGAR PARAMETROS
-        If MotorFA.Comercial.TabInternos.Existe(TipoDoc) Then
-            iVias = MotorFA.Comercial.Series.DaValorAtributo("N", TipoDoc, SerieDoc, "NumVias")
-            sMapa = MotorFA.Comercial.Series.DaConfig("N", TipoDoc, SerieDoc)
+        If Motor.Comercial.TabInternos.Existe(TipoDoc) Then
+            iVias = Motor.Comercial.Series.DaValorAtributo("N", TipoDoc, SerieDoc, "NumVias")
+            sMapa = Motor.Comercial.Series.DaConfig("N", TipoDoc, SerieDoc)
         Else
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", _
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", _
                                                             Interop.StdPlatBS800.IconId.PRI_Critico, "Tipo de Documento não existe." & vbCrLf & TipoDoc)
             GoTo FIM
         End If
@@ -43,16 +43,16 @@
         If Len(Trim(sMapa)) > 0 Then
             NomeDoMapa = sMapa
         Else
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir a Ordem de Produção.", Interop.StdPlatBS800.IconId.PRI_Critico, "Mapa de O.Produção.")
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir a Ordem de Produção.", Interop.StdPlatBS800.IconId.PRI_Critico, "Mapa de O.Produção.")
             GoTo FIM
         End If
 
-        StrXplicado(1) = PlataformaFA.Localizacao.DaResString("GCP", 6535)
-        StrXplicado(2) = PlataformaFA.Localizacao.DaResString("GCP", 6536)
-        StrXplicado(3) = PlataformaFA.Localizacao.DaResString("GCP", 6537)
-        StrXplicado(4) = PlataformaFA.Localizacao.DaResString("GCP", 7270)
-        StrXplicado(5) = PlataformaFA.Localizacao.DaResString("GCP", 6539)
-        StrXplicado(6) = PlataformaFA.Localizacao.DaResString("GCP", 6540)
+        StrXplicado(1) = Plataforma.Localizacao.DaResString("GCP", 6535)
+        StrXplicado(2) = Plataforma.Localizacao.DaResString("GCP", 6536)
+        StrXplicado(3) = Plataforma.Localizacao.DaResString("GCP", 6537)
+        StrXplicado(4) = Plataforma.Localizacao.DaResString("GCP", 7270)
+        StrXplicado(5) = Plataforma.Localizacao.DaResString("GCP", 6539)
+        StrXplicado(6) = Plataforma.Localizacao.DaResString("GCP", 6540)
         '--^--
 
         '================= OUTROS ASSUNTOS - Exportar ===============
@@ -61,15 +61,15 @@
         'PlataformaPRIMAVERA.Mapas.SetFileProp efWord, "TESTE.pdf"
         '============================================================
 
-        PlataformaFA.Mapas.Inicializar("GCP")
-        PlataformaFA.Contexto.Erp.Inicializado = True
+        Plataforma.Mapas.Inicializar("GCP")
+        Plataforma.Contexto.Erp.Inicializado = True
 
         strFormula = "NumberVar TipoDesc;NumberVar RegimeIva;NumberVar DecQde;NumberVar DecPrecUnit;StringVar MotivoIsencao; TipoDesc:=" & 1 & ";RegimeIva:=3;DecQde:=1;DecPrecUnit:=" & 2 & ";MotivoIsencao:=' ';"
-        PlataformaFA.Mapas.AddFormula("InicializaParametros", strFormula)
+        Plataforma.Mapas.AddFormula("InicializaParametros", strFormula)
 
         strFormula = "StringVar Nome; StringVar Morada;StringVar Localidade; StringVar CodPostal; StringVar Telefone; StringVar Fax; StringVar Contribuinte; StringVar CapitalSocial; StringVar Conservatoria; StringVar Matricula;StringVar MoedaCapitalSocial;"
-        'strFormula = strFormula & "Nome:='" & MotorFA.Empresa.IDNome & "'"
-        'strFormula = strFormula & ";Localidade:='" & MotorFA.Empresa.IDLocalidade & "'"
+        'strFormula = strFormula & "Nome:='" & Motor.Empresa.IDNome & "'"
+        'strFormula = strFormula & ";Localidade:='" & Motor.Empresa.IDLocalidade & "'"
         'strFormula = strFormula & ";CodPostal:='" & Aplicacao.Empresa.IDLocalidadeCod & "'"
         'strFormula = strFormula & ";Telefone:='" & Aplicacao.Empresa.IDTelefone & "'"
         'strFormula = strFormula & ";Fax:='" & Aplicacao.Empresa.IDFax & "'"
@@ -81,42 +81,42 @@
         'strFormula = strFormula & ";"
 
 
-        strFormula = strFormula & "Nome:='" & PlataformaFA.Contexto.Empresa.IDNome & "'"
-        strFormula = strFormula & ";Morada:='" & PlataformaFA.Contexto.Empresa.IDMorada & "'"
-        strFormula = strFormula & ";Localidade:='" & PlataformaFA.Contexto.Empresa.IDLocalidade & "'"
-        strFormula = strFormula & ";CodPostal:='" & PlataformaFA.Contexto.Empresa.IDCodPostal & "´'"
-        strFormula = strFormula & ";Telefone:='" & PlataformaFA.Contexto.Empresa.IDTelefone & "'"
-        strFormula = strFormula & ";Fax:='" & PlataformaFA.Contexto.Empresa.IDFax & "'"
-        strFormula = strFormula & ";Contribuinte:='" & PlataformaFA.Contexto.Empresa.IFNIF & "'"
-        strFormula = strFormula & ";CapitalSocial:='" & PlataformaFA.Contexto.Empresa.ICCapitalSocial & "'"
-        strFormula = strFormula & ";Conservatoria:='" & PlataformaFA.Contexto.Empresa.ICConservatoria & "'"
-        strFormula = strFormula & ";Matricula:='" & PlataformaFA.Contexto.Empresa.ICMatricula & "'"
-        strFormula = strFormula & ";MoedaCapitalSocial:='" & PlataformaFA.Contexto.Empresa.ICMoedaCapSocial & "'"
+        strFormula = strFormula & "Nome:='" & Plataforma.Contexto.Empresa.IDNome & "'"
+        strFormula = strFormula & ";Morada:='" & Plataforma.Contexto.Empresa.IDMorada & "'"
+        strFormula = strFormula & ";Localidade:='" & Plataforma.Contexto.Empresa.IDLocalidade & "'"
+        strFormula = strFormula & ";CodPostal:='" & Plataforma.Contexto.Empresa.IDCodPostal & "´'"
+        strFormula = strFormula & ";Telefone:='" & Plataforma.Contexto.Empresa.IDTelefone & "'"
+        strFormula = strFormula & ";Fax:='" & Plataforma.Contexto.Empresa.IDFax & "'"
+        strFormula = strFormula & ";Contribuinte:='" & Plataforma.Contexto.Empresa.IFNIF & "'"
+        strFormula = strFormula & ";CapitalSocial:='" & Plataforma.Contexto.Empresa.ICCapitalSocial & "'"
+        strFormula = strFormula & ";Conservatoria:='" & Plataforma.Contexto.Empresa.ICConservatoria & "'"
+        strFormula = strFormula & ";Matricula:='" & Plataforma.Contexto.Empresa.ICMatricula & "'"
+        strFormula = strFormula & ";MoedaCapitalSocial:='" & Plataforma.Contexto.Empresa.ICMoedaCapSocial & "'"
 
 
-        PlataformaFA.Mapas.AddFormula("DadosEmpresa", strFormula)
+        Plataforma.Mapas.AddFormula("DadosEmpresa", strFormula)
 
         strSelFormula = "{CabecInternos.Filial}='" & Filial & "' And {CabecInternos.Serie}='" & SerieDoc & "' And {CabecInternos.TipoDoc}='" & TipoDoc & "' and {CabecInternos.NumDoc}= " & NumDoc & ""
         If CondicaoLinhas.Length > 0 Then
             strSelFormula = strSelFormula & " And {LinhasInternos.NumLinha} IN [" & CondicaoLinhas & "]"
             Dim TotalLinhas As Integer = GetNumeroLinhas(TipoDoc, SerieDoc, NumDoc)
-            PlataformaFA.Mapas.AddFormula("TotalLinhas", "NumberVar TotalLinhas; TotalLinhas:= " & TotalLinhas)
+            Plataforma.Mapas.AddFormula("TotalLinhas", "NumberVar TotalLinhas; TotalLinhas:= " & TotalLinhas)
         End If
 
-        PlataformaFA.Mapas.SelectionFormula = strSelFormula
+        Plataforma.Mapas.SelectionFormula = strSelFormula
 
-        Titulo = MotorFA.Comercial.TabInternos.DaValorAtributo(TipoDoc, "Descricao") & " Nº " & Trim$(Str$(NumDoc))
+        Titulo = Motor.Comercial.TabInternos.DaValorAtributo(TipoDoc, "Descricao") & " Nº " & Trim$(Str$(NumDoc))
 
         For i = 1 To iVias
-            PlataformaFA.Mapas.AddFormula("NumVia", "'" & StrXplicado(i) & "'")
-            PlataformaFA.Mapas.ImprimeListagem(NomeDoMapa, Titulo, PreViz, 1, "S", strSelFormula, , , False, , True)
+            Plataforma.Mapas.AddFormula("NumVia", "'" & StrXplicado(i) & "'")
+            Plataforma.Mapas.ImprimeListagem(NomeDoMapa, Titulo, PreViz, 1, "S", strSelFormula, , , False, , True)
         Next i
 
 FIM:
 
         Exit Sub
 ERRO:
-        PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
+        Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
     End Sub
 
 
@@ -128,9 +128,9 @@ ERRO:
             sSql = sSql & " INNER JOIN CabecDoc on CabecDoc.id = LinhasDoc.IdCabecDoc  "
             sSql = sSql & " WHERE CabecDoc.TipoDoc = 'ECL' AND CabecDoc.Serie = '" & Serie & "' "
             sSql = sSql & " AND CabecDoc.NumDoc = " & Numdoc & " AND (LinhasDoc.TipoLinha = 10 OR LinhasDoc.TipoLinha = 11)"
-            Return MotorFA.Consulta(sSql).Valor(0)
+            Return Motor.Consulta(sSql).Valor(0)
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
             Return 0
         End Try
     End Function
@@ -153,11 +153,11 @@ ERRO:
         '==================== Carregar Parametros ===================
         On Error GoTo ERRO
         '-----CARREGAR PARAMETROS
-        If MotorFA.Comercial.TabVendas.Existe(TipoDoc) Then
-            iVias = MotorFA.Comercial.Series.DaValorAtributo("V", TipoDoc, SerieDoc, "NumVias")
-            sMapa = MotorFA.Comercial.Series.DaConfig("V", TipoDoc, SerieDoc)
+        If Motor.Comercial.TabVendas.Existe(TipoDoc) Then
+            iVias = Motor.Comercial.Series.DaValorAtributo("V", TipoDoc, SerieDoc, "NumVias")
+            sMapa = Motor.Comercial.Series.DaConfig("V", TipoDoc, SerieDoc)
         Else
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", _
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", _
                                                             Interop.StdPlatBS800.IconId.PRI_Critico, "Tipo de Documento não existe." & vbCrLf & TipoDoc)
             GoTo FIM
         End If
@@ -171,16 +171,16 @@ ERRO:
         If Len(Trim(sMapa)) > 0 Then
             NomeDoMapa = sMapa
         Else
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir a Ordem de Produção.", Interop.StdPlatBS800.IconId.PRI_Critico, "Mapa de O.Produção.")
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir a Ordem de Produção.", Interop.StdPlatBS800.IconId.PRI_Critico, "Mapa de O.Produção.")
             GoTo FIM
         End If
 
-        StrXplicado(1) = PlataformaFA.Localizacao.DaResString("GCP", 6535)
-        StrXplicado(2) = PlataformaFA.Localizacao.DaResString("GCP", 6536)
-        StrXplicado(3) = PlataformaFA.Localizacao.DaResString("GCP", 6537)
-        StrXplicado(4) = PlataformaFA.Localizacao.DaResString("GCP", 7270)
-        StrXplicado(5) = PlataformaFA.Localizacao.DaResString("GCP", 6539)
-        StrXplicado(6) = PlataformaFA.Localizacao.DaResString("GCP", 6540)
+        StrXplicado(1) = Plataforma.Localizacao.DaResString("GCP", 6535)
+        StrXplicado(2) = Plataforma.Localizacao.DaResString("GCP", 6536)
+        StrXplicado(3) = Plataforma.Localizacao.DaResString("GCP", 6537)
+        StrXplicado(4) = Plataforma.Localizacao.DaResString("GCP", 7270)
+        StrXplicado(5) = Plataforma.Localizacao.DaResString("GCP", 6539)
+        StrXplicado(6) = Plataforma.Localizacao.DaResString("GCP", 6540)
         '--^--
 
         '================= OUTROS ASSUNTOS - Exportar ===============
@@ -189,15 +189,15 @@ ERRO:
         'PlataformaPRIMAVERA.Mapas.SetFileProp efWord, "TESTE.pdf"
         '============================================================
 
-        PlataformaFA.Mapas.Inicializar("GCP")
-        PlataformaFA.Contexto.Erp.Inicializado = True
+        Plataforma.Mapas.Inicializar("GCP")
+        Plataforma.Contexto.Erp.Inicializado = True
 
         strFormula = "NumberVar TipoDesc;NumberVar RegimeIva;NumberVar DecQde;NumberVar DecPrecUnit;StringVar MotivoIsencao; TipoDesc:=" & 1 & ";RegimeIva:=3;DecQde:=1;DecPrecUnit:=" & 2 & ";MotivoIsencao:=' ';"
-        PlataformaFA.Mapas.AddFormula("InicializaParametros", strFormula)
+        Plataforma.Mapas.AddFormula("InicializaParametros", strFormula)
 
         strFormula = "StringVar Nome; StringVar Morada;StringVar Localidade; StringVar CodPostal; StringVar Telefone; StringVar Fax; StringVar Contribuinte; StringVar CapitalSocial; StringVar Conservatoria; StringVar Matricula;StringVar MoedaCapitalSocial;"
-        'strFormula = strFormula & "Nome:='" & MotorFA.Empresa.IDNome & "'"
-        'strFormula = strFormula & ";Localidade:='" & MotorFA.Empresa.IDLocalidade & "'"
+        'strFormula = strFormula & "Nome:='" & Motor.Empresa.IDNome & "'"
+        'strFormula = strFormula & ";Localidade:='" & Motor.Empresa.IDLocalidade & "'"
         'strFormula = strFormula & ";CodPostal:='" & Aplicacao.Empresa.IDLocalidadeCod & "'"
         'strFormula = strFormula & ";Telefone:='" & Aplicacao.Empresa.IDTelefone & "'"
         'strFormula = strFormula & ";Fax:='" & Aplicacao.Empresa.IDFax & "'"
@@ -209,33 +209,33 @@ ERRO:
         'strFormula = strFormula & ";"
 
 
-        strFormula = strFormula & "Nome:='" & PlataformaFA.Contexto.Empresa.IDNome & "'"
-        strFormula = strFormula & ";Morada:='" & PlataformaFA.Contexto.Empresa.IDMorada & "'"
-        strFormula = strFormula & ";Localidade:='" & PlataformaFA.Contexto.Empresa.IDLocalidade & "'"
-        strFormula = strFormula & ";CodPostal:='" & PlataformaFA.Contexto.Empresa.IDCodPostal & "´'"
-        strFormula = strFormula & ";Telefone:='" & PlataformaFA.Contexto.Empresa.IDTelefone & "'"
-        strFormula = strFormula & ";Fax:='" & PlataformaFA.Contexto.Empresa.IDFax & "'"
-        strFormula = strFormula & ";Contribuinte:='" & PlataformaFA.Contexto.Empresa.IFNIF & "'"
-        strFormula = strFormula & ";CapitalSocial:='" & PlataformaFA.Contexto.Empresa.ICCapitalSocial & "'"
-        strFormula = strFormula & ";Conservatoria:='" & PlataformaFA.Contexto.Empresa.ICConservatoria & "'"
-        strFormula = strFormula & ";Matricula:='" & PlataformaFA.Contexto.Empresa.ICMatricula & "'"
-        strFormula = strFormula & ";MoedaCapitalSocial:='" & PlataformaFA.Contexto.Empresa.ICMoedaCapSocial & "'"
+        strFormula = strFormula & "Nome:='" & Plataforma.Contexto.Empresa.IDNome & "'"
+        strFormula = strFormula & ";Morada:='" & Plataforma.Contexto.Empresa.IDMorada & "'"
+        strFormula = strFormula & ";Localidade:='" & Plataforma.Contexto.Empresa.IDLocalidade & "'"
+        strFormula = strFormula & ";CodPostal:='" & Plataforma.Contexto.Empresa.IDCodPostal & "´'"
+        strFormula = strFormula & ";Telefone:='" & Plataforma.Contexto.Empresa.IDTelefone & "'"
+        strFormula = strFormula & ";Fax:='" & Plataforma.Contexto.Empresa.IDFax & "'"
+        strFormula = strFormula & ";Contribuinte:='" & Plataforma.Contexto.Empresa.IFNIF & "'"
+        strFormula = strFormula & ";CapitalSocial:='" & Plataforma.Contexto.Empresa.ICCapitalSocial & "'"
+        strFormula = strFormula & ";Conservatoria:='" & Plataforma.Contexto.Empresa.ICConservatoria & "'"
+        strFormula = strFormula & ";Matricula:='" & Plataforma.Contexto.Empresa.ICMatricula & "'"
+        strFormula = strFormula & ";MoedaCapitalSocial:='" & Plataforma.Contexto.Empresa.ICMoedaCapSocial & "'"
 
 
-        PlataformaFA.Mapas.AddFormula("DadosEmpresa", strFormula)
+        Plataforma.Mapas.AddFormula("DadosEmpresa", strFormula)
 
         strSelFormula = "{CabecDoc.Filial}='" & Filial & "' And {CabecDoc.Serie}='" & SerieDoc & "' And {CabecDoc.TipoDoc}='" & TipoDoc & "' and {CabecDoc.NumDoc}= " & NumDoc & ""
-        PlataformaFA.Mapas.SelectionFormula = strSelFormula
+        Plataforma.Mapas.SelectionFormula = strSelFormula
 
-        Titulo = MotorFA.Comercial.TabInternos.DaValorAtributo(TipoDoc, "Descricao") & " Nº " & Trim$(Str$(NumDoc))
+        Titulo = Motor.Comercial.TabInternos.DaValorAtributo(TipoDoc, "Descricao") & " Nº " & Trim$(Str$(NumDoc))
 
         For i = 1 To iVias
-            PlataformaFA.Mapas.AddFormula("NumVia", "'" & StrXplicado(i) & "'")
-            PlataformaFA.Mapas.ImprimeListagem(NomeDoMapa, Titulo, PreViz, 1, "S", strSelFormula, , , False, , True)
+            Plataforma.Mapas.AddFormula("NumVia", "'" & StrXplicado(i) & "'")
+            Plataforma.Mapas.ImprimeListagem(NomeDoMapa, Titulo, PreViz, 1, "S", strSelFormula, , , False, , True)
         Next i
 
         'alterar a flag docimp no cabecdocstatus
-        ' MotorFA.Comercial.Vendas.ActualizaValorAtributo("000", TipoDoc, SerieDoc, NumDoc, "DocImp", 1)
+        ' Motor.Comercial.Vendas.ActualizaValorAtributo("000", TipoDoc, SerieDoc, NumDoc, "DocImp", 1)
         Dim s As String = ""
         s = ""
         s = s & "UPDATE CabecDocStatus SET CabecDocStatus.DocImp = 1"
@@ -243,13 +243,13 @@ ERRO:
         s = s & " INNER JOIN CabecDocStatus on CabecDocStatus.IdCabecDoc = CabecDoc.Id"
         s = s & " WHERE CabecDoc.TipoDoc = '" & TipoDoc & "' AND CabecDoc.Serie = '" & SerieDoc & "' AND CabecDoc.NumDoc = " & NumDoc & ""
 
-        MotorFA.DSO.BDAPL.Execute(s)
+        Motor.DSO.BDAPL.Execute(s)
 
 FIM:
 
         Exit Sub
 ERRO:
-        PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
+        Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao imprimir mapa.", Interop.StdPlatBS800.IconId.PRI_Critico, Err.Number & vbCrLf & Err.Description & vbCrLf & vbCrLf & Err.Source, , True)
     End Sub
 
 End Module

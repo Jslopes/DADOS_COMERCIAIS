@@ -24,9 +24,14 @@ Public Class cDadosComerciais
     '                           M_JU As Object, P_JU As Object, _
     '                           User As String, Psw As String, EmpresaQueExecuta As String)
 
-    Public Sub AbreDadosComerciais(mObj_FA As Object, pObj_FA As Object, _
-                                   mObj_KL As Object, pObj_KL As Object, _
-                                   mObj_JU As Object, pObj_JU As Object, _
+    'Public Sub AbreDadosComerciais(StrConectFA As String, StrConectKL As String, StrConectJU As String, _
+    '                            mObj_FA As Object, pObj_FA As Object, _
+    '                            mObj_KL As Object, pObj_KL As Object, _
+    '                            mObj_JU As Object, pObj_JU As Object, _
+    '                            User As String, Password As String, EmpresaQueExecuta As String, Optional Cliente As String = "")
+
+    Public Sub AbreDadosComerciais(StrConectFA As String, StrConectKL As String, StrConectJU As String, _
+                                   mObj_FA As Object, pObj_FA As Object, _
                                    User As String, Password As String, EmpresaQueExecuta As String, Optional Cliente As String = "")
 
         'sUtilizador = User
@@ -36,18 +41,18 @@ Public Class cDadosComerciais
         EmpresaGeral = EmpresaQueExecuta
         ClienteGeral = Cliente
 
-        MotorFA = mObj_FA
-        PlataformaFA = pObj_FA
+        motor = mObj_FA
+        plataforma = pObj_FA
 
-        MotorKL = mObj_KL
-        PlataformaKL = pObj_KL
+        'MotorKL = mObj_KL
+        'PlataformaKL = pObj_KL
 
-        MotorJU = mObj_JU
-        PlataformaJU = pObj_JU
+        'MotorJU = mObj_JU
+        'PlataformaJU = pObj_JU
 
-        Dim StrConectFA As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-        Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-        Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+        'Dim StrConectFA As String = Plataforma.BaseDados.DaConnectionString(Plataforma.BaseDados.DaNomeBDdaEmpresa(Plataforma.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+        'Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+        'Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
 
 
 
@@ -56,15 +61,15 @@ Public Class cDadosComerciais
         f.GetDados(StrConectFA, StrConectKL, StrConectJU)
         f.ShowDialog()
 
-        'PlataformaFA.FechaPlataforma()
-        'MotorFA.FechaEmpresaTrabalho()
+        'Plataforma.FechaPlataforma()
+        'Motor.FechaEmpresaTrabalho()
 
-        MotorFA = Nothing
-        PlataformaFA = Nothing
-        MotorKL = Nothing
-        PlataformaKL = Nothing
-        MotorJU = Nothing
-        PlataformaJU = Nothing
+        'Motor = Nothing
+        plataforma = Nothing
+        'MotorKL = Nothing
+        'PlataformaKL = Nothing
+        'MotorJU = Nothing
+        'PlataformaJU = Nothing
 
         Exit Sub
 
@@ -77,36 +82,36 @@ ERRO:
 
     End Sub
 
-    Private motor As Interop.ErpBS800.ErpBS = Nothing
-    Private plataforma As Interop.StdPlatBS800.StdPlatBS = Nothing
-    Private plataformapub As Interop.StdPlatBS800.StdBSInterfPub = Nothing
+    'Private motor As Interop.ErpBS800.ErpBS = Nothing
+    'Private plataforma As Interop.StdPlatBS800.StdPlatBS = Nothing
+    'Private plataformapub As Interop.StdPlatBS800.StdBSInterfPub = Nothing
 
-    Public Sub AbrePainelComercial(Aplicacao As Object)
+    'Public Sub AbrePainelComercial(Aplicacao As Object)
 
-        motor = Aplicacao.BSO
-        plataformapub = Aplicacao.PlataformaPRIMAVERA
+    '    motor = Aplicacao.BSO
+    '    plataformapub = Aplicacao.PlataformaPRIMAVERA
 
-        MsgBox("Passo 1 - OK")
+    '    MsgBox("Passo 1 - OK")
 
-        Dim ObjConfApl = New Interop.StdPlatBS800.StdBSConfApl
+    '    Dim ObjConfApl = New Interop.StdPlatBS800.StdBSConfApl
 
-        ObjConfApl.AbvtApl = "GCP"
-        ObjConfApl.Instancia = motor.DSO.Instancia
-        ObjConfApl.Utilizador = Aplicacao.Utilizador.Utilizador
-        ObjConfApl.PwdUtilizador = Aplicacao.Utilizador.Password
+    '    ObjConfApl.AbvtApl = "GCP"
+    '    ObjConfApl.Instancia = motor.DSO.Instancia
+    '    ObjConfApl.Utilizador = Aplicacao.Utilizador.Utilizador
+    '    ObjConfApl.PwdUtilizador = Aplicacao.Utilizador.Password
 
-        MsgBox("Passo 2 - OK")
+    '    MsgBox("Passo 2 - OK")
 
-        plataforma = New Interop.StdPlatBS800.StdPlatBS()
+    '    plataforma = New Interop.StdPlatBS800.StdPlatBS()
 
-        plataforma.AbrePlataformaEmpresaIntegrador(Aplicacao.Empresa.CodEmp, Nothing, ObjConfApl, 1)
+    '    plataforma.AbrePlataformaEmpresaIntegrador(Aplicacao.Empresa.CodEmp, Nothing, ObjConfApl, 1)
 
-        MsgBox("Passo 3 - OK")
+    '    MsgBox("Passo 3 - OK")
 
-        Dim f As New frmDadosComerciais
-        f.ShowDialog()
+    '    Dim f As New frmDadosComerciais
+    '    f.ShowDialog()
 
-    End Sub
+    'End Sub
 
 
 

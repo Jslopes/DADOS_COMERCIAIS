@@ -3,19 +3,19 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Module m3EmCarteira
     Public Sub AtualizarCarteira(dsEncCarteira As DataSet, Cliente As String, _
-                                  gv31 As GridView, gv32 As GridView, gv33 As GridView)
+                                  gv31 As GridView, gv32 As GridView, gv33 As GridView, StrConectFA As String, StrConectKL As String, StrConectJU As String)
         Try
             'Create a connection object. 
-            Dim StrConectFA As String = PlataformaFA.BaseDados.DaConnectionString(PlataformaFA.BaseDados.DaNomeBDdaEmpresa(PlataformaFA.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
-            Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectFA As String = Plataforma.BaseDados.DaConnectionString(Plataforma.BaseDados.DaNomeBDdaEmpresa(Plataforma.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectKL As String = PlataformaKL.BaseDados.DaConnectionString(PlataformaKL.BaseDados.DaNomeBDdaEmpresa(PlataformaKL.Contexto.Empresa.CodEmp).ToString, "Default").ToString
+            'Dim StrConectJU As String = PlataformaJU.BaseDados.DaConnectionString(PlataformaJU.BaseDados.DaNomeBDdaEmpresa(PlataformaJU.Contexto.Empresa.CodEmp).ToString, "Default").ToString
 
-            CarregaEmpresas(dsEncCarteira)
+            CarregaEmpresas(dsEncCarteira, StrConectFA.Replace("PRIFASTIL", "PRIEMPRE"))
 
             dsEncCarteira.Tables("CabecDoc").Clear()
-            CarregaDadosCabec(dsEncCarteira, StrConectFA, Cliente, CStr(PlataformaFA.Contexto.Empresa.CodEmp))
-            CarregaDadosCabec(dsEncCarteira, StrConectKL, Cliente, CStr(PlataformaKL.Contexto.Empresa.CodEmp))
-            CarregaDadosCabec(dsEncCarteira, StrConectJU, Cliente, CStr(PlataformaJU.Contexto.Empresa.CodEmp))
+            CarregaDadosCabec(dsEncCarteira, StrConectFA, Cliente, CStr("FASTIL"))
+            CarregaDadosCabec(dsEncCarteira, StrConectKL, Cliente, CStr("KLICK"))
+            CarregaDadosCabec(dsEncCarteira, StrConectJU, Cliente, CStr("JUALTEX"))
 
             dsEncCarteira.Tables("LinhasDoc").Clear()
             CarregaDadosLinhas(dsEncCarteira, StrConectFA, Cliente)
@@ -67,7 +67,7 @@ Module m3EmCarteira
             Next
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
         End Try
     End Sub
 

@@ -43,7 +43,7 @@ Module mNumericos
     Public Function FormataNum(ByVal Valor As Double) As String
         Dim Decimais As Double = 0
         Try
-            Decimais = MotorFA.Comercial.Params.CasasDecimaisQnt
+            Decimais = Motor.Comercial.Params.CasasDecimaisQnt
             Return FormatNumber(Valor, Decimais)
 
         Catch ex As Exception

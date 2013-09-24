@@ -6,12 +6,12 @@ Module m6DocAberto
                               gv61 As GridView, gv62 As GridView, StrConectFA As String, StrConectKL As String, StrConectJU As String)
         Try
 
-            CarregaEmpresas(dsDocsAberto)
+            CarregaEmpresas(dsDocsAberto, StrConectFA.Replace("PRIFASTIL", "PRIEMPRE"))
 
             dsDocsAberto.Tables("Pendentes").Clear()
-            CarregaPendentes(dsDocsAberto, StrConectFA, Cliente, CStr(PlataformaFA.Contexto.Empresa.CodEmp))
-            CarregaPendentes(dsDocsAberto, StrConectKL, Cliente, CStr(PlataformaKL.Contexto.Empresa.CodEmp))
-            CarregaPendentes(dsDocsAberto, StrConectJU, Cliente, CStr(PlataformaJU.Contexto.Empresa.CodEmp))
+            CarregaPendentes(dsDocsAberto, StrConectFA, Cliente, CStr("FASTIL"))
+            CarregaPendentes(dsDocsAberto, StrConectKL, Cliente, CStr("KLICK"))
+            CarregaPendentes(dsDocsAberto, StrConectJU, Cliente, CStr("JUALTEX"))
 
             'Configurar carateristicas das colunas
             Dim i As Integer = 0
@@ -54,7 +54,7 @@ Module m6DocAberto
             Next
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Erro ao atualizar os dados.", True)
         End Try
     End Sub
 

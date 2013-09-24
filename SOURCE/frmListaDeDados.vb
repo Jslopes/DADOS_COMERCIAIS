@@ -11,21 +11,33 @@ Imports System.Windows.Forms
 
 Public Class frmListaDeDados
 
-    Private StrConect As String
-    Private Tabela As Structure_TDU
-    Private sCampos As String = ""
+    Public Resultado As String
+    Private strConect As String
+    Private strSql As String
+    Private frmIniciado As Boolean = False
+    Private SelectMultiline As Boolean = True
+    Private nColunas As Integer
+    Private linNumericas As String
 
-    Friend Sub SetDados(ByVal Conect As String, StructureTabela As Structure_TDU)
-        'Dim BaseDados As String = PlataformaFA.BaseDados.DaNomeBDdaEmpresa(CodEmpresa)
-        'Dim ConectPri As String = PlataformaFA.BaseDados.DaConnectionString(BaseDados, "Default")
-        'Debug.Print(ConectPri)
-        StrConect = Conect
-        Tabela = StructureTabela
-        Me.Text = Tabela.Caption
+    Friend Sub SetDados(ByVal Caption As String, ByVal QuerySQL As String, ByVal Conect As String, _
+                        Optional Multiline As Boolean = False, Optional NumeroColunas As Integer = -1, _
+                        Optional LinhasNumericas As String = "")
+        'N3
+        strConect = Conect
+        strSql = QuerySQL
+        SelectMultiline = Multiline
+        nColunas = NumeroColunas
+        linNumericas = LinhasNumericas
+        Resultado = ""
+        Me.Text = Caption
     End Sub
 
     Private Sub frmListaPrecos_Activated(sender As Object, e As System.EventArgs) Handles Me.Activated
-        AtualizarDados()
+        If frmIniciado = False Then
+            frmIniciado = True
+            Resultado = ""
+            AtualizarDados(strConect, strSql)
+        End If
     End Sub
 
     Private Sub frmListaPrecos_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -46,7 +58,7 @@ Public Class frmListaDeDados
             LookBaseXtraEditors(BarAndDockingController1.LookAndFeel)
 
         Catch ex As Exception
-            PlataformaFA.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao iniciar o formulário.", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Load Form.", True)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao iniciar o formulário.", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "Load Form.", True)
         End Try
 
         Try
@@ -89,16 +101,16 @@ Public Class frmListaDeDados
             'DevExpress.XtraEditors.XtraMessageBox.Show(view.GetRowCellValue(view.GetSelectedRows(0), view.Columns(0)), colCaption, MessageBoxButtons.OK)
             'EditaRegisto(view.GetRowCellValue(view.GetSelectedRows(0), view.Columns(0)))
 
-            Dim iTbl As Integer
-            If Tabela.SqlTabela = "TDU_PrecoFechos" Then
-                'iTbl = TabelasGerais.PrecoFechos
-            ElseIf Tabela.SqlTabela = "TDU_PrecoDivisiveis" Then
-                'iTbl = TabelasGerais.PrecoDivisiveis
-            ElseIf Tabela.SqlTabela = "TDU_PrecoCursores" Then
-                'iTbl = TabelasGerais.PrecoCursores
-            Else
-                iTbl = 0
-            End If
+            'Dim iTbl As Integer
+            'If Tabela.SqlTabela = "TDU_PrecoFechos" Then
+            '    'iTbl = TabelasGerais.PrecoFechos
+            'ElseIf Tabela.SqlTabela = "TDU_PrecoDivisiveis" Then
+            '    'iTbl = TabelasGerais.PrecoDivisiveis
+            'ElseIf Tabela.SqlTabela = "TDU_PrecoCursores" Then
+            '    'iTbl = TabelasGerais.PrecoCursores
+            'Else
+            '    iTbl = 0
+            'End If
 
             'If iTbl <> 0 Then AbreTabelaPrecos(iTbl, Me.MdiParent, view.GetRowCellValue(view.GetSelectedRows(0), view.Columns(0)))
 
@@ -114,60 +126,20 @@ Public Class frmListaDeDados
         End If
     End Sub
 
-
-    Private Sub Abre()
-        'Dim f As New frmTDU_Precos
-        'Dim t As New Structure_TDU
-
-        't.Caption = "Preços de Fechos"
-        't.Titulo = "Preços de Fechos"
-        't.SqlCampos = {"CDU_codigo", "CDU_Designacao", "CDU_DscAbrv", "CDU_Preco", "CDU_Familia"}
-        't.tblCampos = {"Código", "Designação", "Descrição Abrv.", "Preço", "Familia"}
-        't.SqlTabela = "TDU_PrecoFechos"
-        'f.SetDados(t)
-
-        'f.MdiParent = Me
-        'f.Show()
-
-        'f.BringToFront()
-
-    End Sub
-
     Private Sub xbtAtualizar_ItemClick(sender As System.Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles xbtAtualizar.ItemClick
-        'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        'SplashScreenManager.Default.SetWaitFormDescription("A atualizar dados...")
 
-        'For i As Integer = 1 To 100
-        '    System.Threading.Thread.Sleep(15)
+        AtualizarDados(strConect, strSql)
 
-        '    '' Change progress to be displayed by SplashImagePainter
-        '    'FastilSplashScreenManager.SplashImagePainter.Painter.ViewInfo.Counter = i
-        '    ''Force SplashImagePainter to repaint information
-        '    'SplashScreenManager.Default.Invalidate()
-        'Next i
-
-
-        AtualizarDados()
-
-        'SplashScreenManager.CloseForm(False)
     End Sub
 
-    Private Sub AtualizarDados()
-
-        Try
-            'GridView1.RefreshData()
-        Catch ex As Exception
-
-        End Try
-
-
+    Private Sub AtualizarDados(sConect As String, QuerySql As String)
+        Dim i As Integer
         Try
             ' Create a connection object. 
-            Dim Connection As New OleDbConnection(StrConect)
+            Dim Connection As New OleDbConnection(sConect)
 
             ' Create a data adapter. 
-            'Dim Adapter As New OleDbDataAdapter("SELECT CDU_Codigo as [Código], CDU_Designacao as [Designação], CDU_DscAbrv as [Designação Abrv.], CDU_Preco as [Preço], CDU_Familia as [Familia] FROM TDU_PrecoFechos", Connection)
-            Dim Adapter As New OleDbDataAdapter("SELECT " & sCampos & " FROM " & Tabela.SqlTabela, Connection)
+            Dim Adapter As New OleDbDataAdapter(QuerySql, Connection)
 
             ' Create and fill a dataset. 
             Dim SourceDataSet As New DataSet()
@@ -178,20 +150,27 @@ Public Class frmListaDeDados
 
             GridView1.PopulateColumns()
 
-            ' Alterar a aparencia do cabeçalho da grelha
-            Try
-                Dim i As Integer = 0
-                For i = 0 To 4
-                    'aparencia no cabeçalho deve ser editada no formulário
-                    GridView1.Columns(i).AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-                    GridView1.Columns(i).AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.HorzAlignment.Center
-                Next
-            Catch ex As Exception
 
-            End Try
+            ' Alterar a aparencia do cabeçalho da grelha
+            If nColunas > 0 Then
+                Try
+                    For i = 0 To nColunas - 1
+                        'aparencia no cabeçalho deve ser editada no formulário
+                        GridView1.Columns(i).AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+                        GridView1.Columns(i).AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.HorzAlignment.Center
+                    Next
+                    Dim a() As String = linNumericas.Split(";")
+                    For i = 0 To a.Length - 1
+                        GridView1.Columns(CInt(a(i).Split(",")(0))).DisplayFormat.FormatType = FormatType.Numeric
+                        GridView1.Columns(CInt(a(i).Split(",")(0))).DisplayFormat.FormatString = CStr(a(i).Split(",")(1))
+                    Next
+                Catch ex As Exception
+                    Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro ao configurar o layout da lista.", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "", True)
+                End Try
+            End If
 
             ' Esta opção estando ativa coloca as colunas como auto size....
-            GridView1.OptionsView.ColumnAutoWidth = False
+            'GridView1.OptionsView.ColumnAutoWidth = False
 
             'GridView1.Columns(0).Width = 75
             'GridView1.Columns(1).Width = 150
@@ -203,7 +182,7 @@ Public Class frmListaDeDados
             GridView1.BestFitColumns()
 
             'A coluna com o preços vai ficar maior
-            GridView1.Columns(3).Width = GridView1.Columns(3).Width * 1.5
+            'GridView1.Columns(3).Width = GridView1.Columns(3).Width * 1.5
 
             'GridView1.Columns(3).DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             'GridView1.Columns(0).DisplayFormat.FormatString = New BaseFormatter
@@ -211,15 +190,18 @@ Public Class frmListaDeDados
             'GridView1.Columns(3).DisplayFormat.FormatString = "###,###,##0.000"
             'GridView1.Columns(3).DisplayFormat.FormatType = FormatType.Numeric
             'GridView1.Columns(3).DisplayFormat.FormatString = "c3"
-            GridView1.Columns(3).DisplayFormat.FormatType = FormatType.Numeric
-            GridView1.Columns(3).DisplayFormat.FormatString = "N3"
+
+            'GridView1.Columns(3).DisplayFormat.FormatType = FormatType.Numeric
+            'GridView1.Columns(3).DisplayFormat.FormatString = "N3"
+
+
 
 
             'nReg.Caption = GridView1.RowFilter & "/" & GridView1.RowCount & " Registos"
             nReg.Caption = GridView1.RowCount & " Registos"
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            Plataforma.Dialogos.MostraMensagemEx(Interop.StdPlatBS800.TipoMsg.PRI_SimplesOk, "Erro na leitura de dados.", Interop.StdPlatBS800.IconId.PRI_Critico, ex.Message, "", True)
         End Try
     End Sub
 

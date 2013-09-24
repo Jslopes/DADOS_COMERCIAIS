@@ -23,28 +23,17 @@
         <xs:element name="CabecDoc" msprop:Generator_TableClassName="CabecDocDataTable" msprop:Generator_TableVarName="tableCabecDoc" msprop:Generator_TablePropName="CabecDoc" msprop:Generator_RowDeletingName="CabecDocRowDeleting" msprop:Generator_UserTableName="CabecDoc" msprop:Generator_RowChangingName="CabecDocRowChanging" msprop:Generator_RowEvHandlerName="CabecDocRowChangeEventHandler" msprop:Generator_RowDeletedName="CabecDocRowDeleted" msprop:Generator_RowEvArgName="CabecDocRowChangeEvent" msprop:Generator_RowChangedName="CabecDocRowChanged" msprop:Generator_RowClassName="CabecDocRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
-              <xs:element name="Serie" msprop:Generator_ColumnVarNameInTable="columnSerie" msprop:Generator_ColumnPropNameInRow="Serie" msprop:Generator_ColumnPropNameInTable="SerieColumn" msprop:Generator_UserColumnName="Serie" type="xs:float" minOccurs="0" />
-              <xs:element name="NumDoc" msdata:Caption="Num. Doc." msprop:Generator_ColumnVarNameInTable="columnNumDoc" msprop:Generator_ColumnPropNameInRow="NumDoc" msprop:Generator_ColumnPropNameInTable="NumDocColumn" msprop:Generator_UserColumnName="NumDoc" type="xs:float" minOccurs="0" />
-              <xs:element name="Entidade" msprop:Generator_ColumnVarNameInTable="columnEntidade" msprop:Generator_ColumnPropNameInRow="Entidade" msprop:Generator_ColumnPropNameInTable="EntidadeColumn" msprop:Generator_UserColumnName="Entidade" type="xs:string" minOccurs="0" />
-              <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome" type="xs:string" minOccurs="0" />
-              <xs:element name="Data" msdata:Caption="Data Doc." msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:string" minOccurs="0" />
-              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Faturas" msprop:Generator_TableClassName="FaturasDataTable" msprop:Generator_TableVarName="tableFaturas" msprop:Generator_TablePropName="Faturas" msprop:Generator_RowDeletingName="FaturasRowDeleting" msprop:Generator_UserTableName="Faturas" msprop:Generator_RowChangingName="FaturasRowChanging" msprop:Generator_RowEvHandlerName="FaturasRowChangeEventHandler" msprop:Generator_RowDeletedName="FaturasRowDeleted" msprop:Generator_RowEvArgName="FaturasRowChangeEvent" msprop:Generator_RowChangedName="FaturasRowChanged" msprop:Generator_RowClassName="FaturasRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="IdCabecDoc" msprop:Generator_ColumnVarNameInTable="columnIdCabecDoc" msprop:Generator_ColumnPropNameInRow="IdCabecDoc" msprop:Generator_ColumnPropNameInTable="IdCabecDocColumn" msprop:Generator_UserColumnName="IdCabecDoc" type="xs:string" minOccurs="0" />
-              <xs:element name="TipoDoc" msprop:Generator_ColumnVarNameInTable="columnTipoDoc" msprop:Generator_ColumnPropNameInRow="TipoDoc" msprop:Generator_ColumnPropNameInTable="TipoDocColumn" msprop:Generator_UserColumnName="TipoDoc" type="xs:string" minOccurs="0" />
-              <xs:element name="Serie" msprop:Generator_ColumnVarNameInTable="columnSerie" msprop:Generator_ColumnPropNameInRow="Serie" msprop:Generator_ColumnPropNameInTable="SerieColumn" msprop:Generator_UserColumnName="Serie" type="xs:string" minOccurs="0" />
-              <xs:element name="NumDoc" msprop:Generator_ColumnVarNameInTable="columnNumDoc" msprop:Generator_ColumnPropNameInRow="NumDoc" msprop:Generator_ColumnPropNameInTable="NumDocColumn" msprop:Generator_UserColumnName="NumDoc" type="xs:int" minOccurs="0" />
-              <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" type="xs:string" minOccurs="0" />
-              <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome" type="xs:string" minOccurs="0" />
-              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="TipoFa" msprop:Generator_ColumnVarNameInTable="columnTipoFa" msprop:Generator_ColumnPropNameInRow="TipoFa" msprop:Generator_ColumnPropNameInTable="TipoFaColumn" msprop:Generator_UserColumnName="TipoFa" type="xs:string" minOccurs="0" />
+              <xs:element name="SerieFa" msprop:Generator_ColumnVarNameInTable="columnSerieFa" msprop:Generator_ColumnPropNameInRow="SerieFa" msprop:Generator_ColumnPropNameInTable="SerieFaColumn" msprop:Generator_UserColumnName="SerieFa" type="xs:string" minOccurs="0" />
+              <xs:element name="NumFa" msprop:Generator_ColumnVarNameInTable="columnNumFa" msprop:Generator_ColumnPropNameInRow="NumFa" msprop:Generator_ColumnPropNameInTable="NumFaColumn" msprop:Generator_UserColumnName="NumFa" type="xs:string" minOccurs="0" />
+              <xs:element name="DataFa" msprop:Generator_ColumnVarNameInTable="columnDataFa" msprop:Generator_ColumnPropNameInRow="DataFa" msprop:Generator_ColumnPropNameInTable="DataFaColumn" msprop:Generator_UserColumnName="DataFa" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TotaFa" msprop:Generator_ColumnVarNameInTable="columnTotaFa" msprop:Generator_ColumnPropNameInRow="TotaFa" msprop:Generator_ColumnPropNameInTable="TotaFaColumn" msprop:Generator_UserColumnName="TotaFa" type="xs:double" minOccurs="0" />
+              <xs:element name="TipoEcl" msprop:Generator_ColumnVarNameInTable="columnTipoEcl" msprop:Generator_ColumnPropNameInRow="TipoEcl" msprop:Generator_ColumnPropNameInTable="TipoEclColumn" msprop:Generator_UserColumnName="TipoEcl" type="xs:string" minOccurs="0" />
+              <xs:element name="SerieEcl" msprop:Generator_ColumnVarNameInTable="columnSerieEcl" msprop:Generator_ColumnPropNameInRow="SerieEcl" msprop:Generator_ColumnPropNameInTable="SerieEclColumn" msprop:Generator_UserColumnName="SerieEcl" type="xs:string" minOccurs="0" />
+              <xs:element name="NumEcl" msprop:Generator_ColumnVarNameInTable="columnNumEcl" msprop:Generator_ColumnPropNameInRow="NumEcl" msprop:Generator_ColumnPropNameInTable="NumEclColumn" msprop:Generator_UserColumnName="NumEcl" type="xs:string" minOccurs="0" />
+              <xs:element name="DataEcl" msprop:Generator_ColumnVarNameInTable="columnDataEcl" msprop:Generator_ColumnPropNameInRow="DataEcl" msprop:Generator_ColumnPropNameInTable="DataEclColumn" msprop:Generator_UserColumnName="DataEcl" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TotalEcl" msprop:Generator_ColumnVarNameInTable="columnTotalEcl" msprop:Generator_ColumnPropNameInRow="TotalEcl" msprop:Generator_ColumnPropNameInTable="TotalEclColumn" msprop:Generator_UserColumnName="TotalEcl" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -54,15 +43,10 @@
       <xs:selector xpath=".//mstns:Empresa" />
       <xs:field xpath="mstns:Empresa" />
     </xs:unique>
-    <xs:unique name="CabecDocKey1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:CabecDoc" />
-      <xs:field xpath="mstns:ID" />
-    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Empresa_CabecECL" msdata:parent="Empresa" msdata:child="CabecDoc" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="CabecDoc" msprop:Generator_ChildPropName="GetCabecDocRows" msprop:Generator_ParentPropName="EmpresaRow" msprop:Generator_UserRelationName="Empresa_CabecECL" msprop:Generator_RelationVarName="relationEmpresa_CabecECL" msprop:Generator_UserParentTable="Empresa" />
-      <msdata:Relationship name="CabecECL_Faturas" msdata:parent="CabecDoc" msdata:child="Faturas" msdata:parentkey="ID" msdata:childkey="IdCabecDoc" msprop:Generator_UserChildTable="Faturas" msprop:Generator_ChildPropName="GetFaturasRows" msprop:Generator_UserParentTable="CabecDoc" msprop:Generator_UserRelationName="CabecECL_Faturas" msprop:Generator_RelationVarName="relationCabecECL_Faturas" msprop:Generator_ParentPropName="CabecDocRow" />
+      <msdata:Relationship name="Empresa_CabecECL" msdata:parent="Empresa" msdata:child="CabecDoc" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="CabecDoc" msprop:Generator_ChildPropName="GetCabecDocRows" msprop:Generator_UserParentTable="Empresa" msprop:Generator_UserRelationName="Empresa_CabecECL" msprop:Generator_RelationVarName="relationEmpresa_CabecECL" msprop:Generator_ParentPropName="EmpresaRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
