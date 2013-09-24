@@ -762,7 +762,7 @@ Partial Public Class DataSetDocAberto
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddPendentesRow(ByVal parentEmpresaRowByEmpresa_Pendentes As EmpresaRow, ByVal Conta As String, ByVal TipoDoc As String, ByVal Serie As String, ByVal Numero As Integer, ByVal Estado As String, ByVal DataVenc As Date, ByVal DataDoc As Date, ByVal Dias As Integer, ByVal ValorPendente As Double) As PendentesRow
+        Public Overloads Function AddPendentesRow(ByVal parentEmpresaRowByEmpresa_Pendentes As EmpresaRow, ByVal Conta As String, ByVal TipoDoc As String, ByVal Serie As String, ByVal Numero As String, ByVal Estado As String, ByVal DataVenc As Date, ByVal DataDoc As Date, ByVal Dias As Integer, ByVal ValorPendente As Double) As PendentesRow
             Dim rowPendentesRow As PendentesRow = CType(Me.NewRow,PendentesRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, Conta, TipoDoc, Serie, Numero, Estado, DataVenc, DataDoc, Dias, ValorPendente}
             If (Not (parentEmpresaRowByEmpresa_Pendentes) Is Nothing) Then
@@ -813,7 +813,7 @@ Partial Public Class DataSetDocAberto
             MyBase.Columns.Add(Me.columnTipoDoc)
             Me.columnSerie = New Global.System.Data.DataColumn("Serie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSerie)
-            Me.columnNumero = New Global.System.Data.DataColumn("Numero", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnNumero = New Global.System.Data.DataColumn("Numero", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNumero)
             Me.columnEstado = New Global.System.Data.DataColumn("Estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEstado)
@@ -1115,10 +1115,10 @@ Partial Public Class DataSetDocAberto
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Numero() As Integer
+        Public Property Numero() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePendentes.NumeroColumn),Integer)
+                    Return CType(Me(Me.tablePendentes.NumeroColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'Numero' in table 'Pendentes' is DBNull.", e)
                 End Try

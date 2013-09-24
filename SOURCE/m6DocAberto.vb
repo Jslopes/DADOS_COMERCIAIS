@@ -74,7 +74,7 @@ Module m6DocAberto
 
                     dsPendentes.Tables("Pendentes").Rows.Add(New Object() _
                                                           {CStr(reader.Item(0).ToString), CStr(reader.Item(1).ToString), CStr(reader.Item(2).ToString), _
-                                                           CStr(reader.Item(3).ToString), CLng(reader.Item(4).ToString), CStr(reader.Item(5).ToString), _
+                                                           CStr(reader.Item(3).ToString), CStr(reader.Item(4).ToString), CStr(reader.Item(5).ToString), _
                                                            CDate(reader.Item(6).ToString), CDate(reader.Item(7).ToString), CInt(reader.Item(8).ToString), CDbl(reader.Item(9).ToString)})
                 Loop
             End Using

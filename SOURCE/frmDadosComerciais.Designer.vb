@@ -969,6 +969,8 @@ Partial Class frmDadosComerciais
         '
         'colNumero
         '
+        Me.colNumero.AppearanceCell.Options.UseTextOptions = True
+        Me.colNumero.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.colNumero.Caption = "Num. Doc."
         Me.colNumero.FieldName = "Numero"
         Me.colNumero.Name = "colNumero"

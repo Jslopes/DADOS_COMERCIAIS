@@ -27,7 +27,7 @@
               <xs:element name="Conta" msdata:Caption="Serie" msprop:Generator_ColumnVarNameInTable="columnConta" msprop:Generator_ColumnPropNameInRow="Conta" msprop:Generator_ColumnPropNameInTable="ContaColumn" msprop:Generator_UserColumnName="Conta" type="xs:string" minOccurs="0" />
               <xs:element name="TipoDoc" msdata:Caption="Num. Doc." msprop:Generator_ColumnVarNameInTable="columnTipoDoc" msprop:Generator_ColumnPropNameInRow="TipoDoc" msprop:Generator_ColumnPropNameInTable="TipoDocColumn" msprop:Generator_UserColumnName="TipoDoc" type="xs:string" minOccurs="0" />
               <xs:element name="Serie" msdata:Caption="Entidade" msprop:Generator_ColumnVarNameInTable="columnSerie" msprop:Generator_ColumnPropNameInRow="Serie" msprop:Generator_ColumnPropNameInTable="SerieColumn" msprop:Generator_UserColumnName="Serie" type="xs:string" minOccurs="0" />
-              <xs:element name="Numero" msdata:Caption="Nome" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:int" minOccurs="0" />
+              <xs:element name="Numero" msdata:Caption="Nome" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:string" minOccurs="0" />
               <xs:element name="Estado" msdata:Caption="Data Doc." msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado" type="xs:string" minOccurs="0" />
               <xs:element name="DataVenc" msdata:Caption="Total" msprop:Generator_ColumnVarNameInTable="columnDataVenc" msprop:Generator_ColumnPropNameInRow="DataVenc" msprop:Generator_ColumnPropNameInTable="DataVencColumn" msprop:Generator_UserColumnName="DataVenc" type="xs:dateTime" minOccurs="0" />
               <xs:element name="DataDoc" msprop:Generator_ColumnVarNameInTable="columnDataDoc" msprop:Generator_ColumnPropNameInRow="DataDoc" msprop:Generator_ColumnPropNameInTable="DataDocColumn" msprop:Generator_UserColumnName="DataDoc" type="xs:dateTime" minOccurs="0" />
@@ -45,7 +45,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Empresa_Pendentes" msdata:parent="Empresa" msdata:child="Pendentes" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="Pendentes" msprop:Generator_ChildPropName="GetPendentesRows" msprop:Generator_UserParentTable="Empresa" msprop:Generator_UserRelationName="Empresa_Pendentes" msprop:Generator_RelationVarName="relationEmpresa_Pendentes" msprop:Generator_ParentPropName="EmpresaRow" />
+      <msdata:Relationship name="Empresa_Pendentes" msdata:parent="Empresa" msdata:child="Pendentes" msdata:parentkey="Empresa" msdata:childkey="Empresa" msprop:Generator_UserChildTable="Pendentes" msprop:Generator_ChildPropName="GetPendentesRows" msprop:Generator_ParentPropName="EmpresaRow" msprop:Generator_UserRelationName="Empresa_Pendentes" msprop:Generator_RelationVarName="relationEmpresa_Pendentes" msprop:Generator_UserParentTable="Empresa" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
